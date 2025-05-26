@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from 'react-hook-form';
@@ -9,16 +10,18 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
-import { useState, useTransition } from 'react';
+import { useTransition } from 'react';
+import { useI18n } from '@/locales/client'; // Import useI18n
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }), // Keep Zod messages in English for dev
   email: z.string().email({ message: "Please enter a valid email address." }),
   subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
   message: z.string().min(20, { message: "Message must be at least 20 characters." }),
 });
 
 export default function ContactForm() {
+  const t = useI18n(); // Initialize useI18n
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
 
@@ -32,16 +35,14 @@ export default function ContactForm() {
     },
   });
 
-  // Mock submission handler
   const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
     startTransition(() => {
-      // Simulate API call
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           console.log("Form submitted:", values);
           toast({
-            title: "Message Sent!",
-            description: "Thank you for reaching out. We'll get back to you soon.",
+            title: t('contact_form.success_title'),
+            description: t('contact_form.success_description'),
           });
           form.reset();
           resolve();
@@ -59,9 +60,9 @@ export default function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel>{t('contact_form.full_name_label')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input placeholder={t('contact_form.full_name_placeholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -72,9 +73,9 @@ export default function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel>{t('contact_form.email_label')}</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john.doe@example.com" {...field} />
+                  <Input type="email" placeholder={t('contact_form.email_placeholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -86,9 +87,9 @@ export default function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>{t('contact_form.subject_label')}</FormLabel>
               <FormControl>
-                <Input placeholder="Inquiry about Web Development Services" {...field} />
+                <Input placeholder={t('contact_form.subject_placeholder')} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -99,9 +100,9 @@ export default function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{t('contact_form.message_label')}</FormLabel>
               <FormControl>
-                <Textarea placeholder="Tell us more about your project or inquiry..." rows={6} {...field} />
+                <Textarea placeholder={t('contact_form.message_placeholder')} rows={6} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -111,10 +112,10 @@ export default function ContactForm() {
           {isPending ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Sending...
+              {t('contact_form.sending_button')}
             </>
           ) : (
-            "Send Message"
+            t('contact_form.send_message_button')
           )}
         </Button>
       </form>

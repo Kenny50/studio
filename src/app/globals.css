@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +6,12 @@
 body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
+/* Apply Noto Sans SC for Chinese language specifically */
+body:lang(zh) {
+  font-family: var(--font-noto-sans-sc), var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
 
 @layer base {
   :root {

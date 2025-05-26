@@ -14,20 +14,16 @@ import {
   DialogClose,
 } from '@/components/ui/dialog';
 import { Mail, Instagram, Linkedin } from 'lucide-react';
+import { useI18n } from '@/locales/client'; // Import useI18n
 
 interface NewsletterSubscribeFormProps {
-  ctaText?: string;
-  formTitle?: string;
-  formDescription?: string;
   className?: string;
 }
 
 export default function NewsletterSubscribeForm({
-  ctaText = "Subscribe",
-  formTitle,
-  formDescription,
   className,
 }: NewsletterSubscribeFormProps) {
+  const t = useI18n(); // Initialize useI18n
   const [email, setEmail] = useState('');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -36,32 +32,30 @@ export default function NewsletterSubscribeForm({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
-      setErrorMessage('Email address cannot be empty.');
+      setErrorMessage(t('newsletter_form.email_empty_error'));
       setShowError(true);
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setErrorMessage('Please enter a valid email address.');
+      setErrorMessage(t('newsletter_form.email_invalid_error'));
       setShowError(true);
       return;
     }
     setShowError(false);
     setErrorMessage('');
-    // Mock submission
     console.log('Subscribed with:', email);
     setIsDialogOpen(true);
-    // setEmail(''); // Optionally clear email field after submission dialog is confirmed closed
   };
 
   return (
     <div className={className}>
-      {formTitle && <h3 className="text-lg font-semibold mb-2 text-foreground">{formTitle}</h3>}
-      {formDescription && <p className="text-sm text-muted-foreground mb-4">{formDescription}</p>}
+      <h3 className="text-lg font-semibold mb-2 text-foreground">{t('newsletter_form.form_title')}</h3>
+      <p className="text-sm text-muted-foreground mb-4">{t('newsletter_form.form_description')}</p>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 items-start">
         <div className="w-full sm:flex-grow">
           <Input
             type="email"
-            placeholder="Enter your email"
+            placeholder={t('newsletter_form.email_placeholder')}
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -73,39 +67,39 @@ export default function NewsletterSubscribeForm({
           {showError && <p className="text-destructive text-xs mt-1">{errorMessage}</p>}
         </div>
         <Button type="submit" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground whitespace-nowrap">
-          <Mail className="mr-2 h-4 w-4" /> {ctaText}
+          <Mail className="mr-2 h-4 w-4" /> {t('newsletter_form.subscribe_now_button')}
         </Button>
       </form>
 
       <Dialog open={isDialogOpen} onOpenChange={(isOpen) => {
         setIsDialogOpen(isOpen);
         if (!isOpen) {
-          setEmail(''); // Clear email when dialog closes
+          setEmail('');
         }
       }}>
         <DialogContent className="sm:max-w-md p-6">
           <DialogHeader className="text-center">
-            <DialogTitle className="text-2xl font-bold">Thank You for Subscribing!</DialogTitle>
+            <DialogTitle className="text-2xl font-bold">{t('newsletter_form.dialog_title')}</DialogTitle>
           </DialogHeader>
           <DialogDescription className="text-center mt-2 mb-4 text-muted-foreground">
-            You might also want to follow our social media channels for more updates:
+            {t('newsletter_form.dialog_description')}
           </DialogDescription>
           <div className="flex justify-center gap-4 my-4">
             <Button variant="outline" asChild>
               <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <Instagram className="mr-2 h-5 w-5" /> Instagram
+                <Instagram className="mr-2 h-5 w-5" /> {t('newsletter_form.instagram_button')}
               </Link>
             </Button>
             <Button variant="outline" asChild>
               <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin className="mr-2 h-5 w-5" /> LinkedIn
+                <Linkedin className="mr-2 h-5 w-5" /> {t('newsletter_form.linkedin_button')}
               </Link>
             </Button>
           </div>
           <div className="mt-6 flex justify-end">
             <DialogClose asChild>
               <Button type="button" variant="secondary">
-                Close
+                {t('newsletter_form.close_button')}
               </Button>
             </DialogClose>
           </div>
