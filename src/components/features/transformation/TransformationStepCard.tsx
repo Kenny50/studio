@@ -1,14 +1,14 @@
+
 import type { ReactNode } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface TransformationStepCardProps {
-  stepNumber: number;
   title: string;
   description: string;
   icon: ReactNode;
 }
 
-export default function TransformationStepCard({ stepNumber, title, description, icon }: TransformationStepCardProps) {
+export default function TransformationStepCard({ title, description, icon }: TransformationStepCardProps) {
   return (
     <Card className="h-full shadow-lg hover:shadow-xl transition-shadow duration-300">
       <CardHeader className="flex flex-row items-center gap-4">
@@ -16,7 +16,6 @@ export default function TransformationStepCard({ stepNumber, title, description,
           {icon}
         </div>
         <div>
-          <p className="text-sm font-semibold text-primary">Step {stepNumber}</p>
           <CardTitle className="text-xl">{title}</CardTitle>
         </div>
       </CardHeader>

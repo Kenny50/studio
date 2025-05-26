@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import TransformationStepCard from '@/components/features/transformation/TransformationStepCard';
-import { ClipboardList, ListChecks, DraftingCompass, Rocket, Repeat, ArrowDown } from 'lucide-react';
+import { ClipboardList, ListChecks, DraftingCompass, Rocket, Repeat } from 'lucide-react';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
@@ -49,36 +49,30 @@ export default function TransformationGuidePage() {
       </section>
 
       <section className="py-12 md:py-16">
-        <div className="relative max-w-4xl mx-auto">
-          {/* Desktop Timeline - now starts at lg */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-border/50 transform -translate-x-1/2"></div>
-          
-          {/* space-y-16 applies up to lg, then lg:space-y-0 */}
-          <div className="space-y-16 lg:space-y-0">
+        <div className="max-w-2xl mx-auto">
+          <div className="space-y-12">
             {transformationSteps.map((step, index) => (
-              // grid, grid-cols-2, gap-8 now apply from lg. mb-8 applies up to lg.
-              <div key={step.title} className="lg:grid lg:grid-cols-2 lg:gap-8 items-center relative mb-8 lg:mb-0">
-                {/* Icon and Line for Mobile/Tablet - now hidden from lg upwards */}
-                {index < transformationSteps.length -1 && (
-                  <div className="lg:hidden flex justify-center my-4">
-                     <ArrowDown className="h-8 w-8 text-primary/50" />
+              <div key={step.title} className="flex items-start gap-x-6 sm:gap-x-8">
+                {/* Left Column: Progress Indicator */}
+                <div className="flex flex-col items-center flex-shrink-0">
+                  <div
+                    className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-primary bg-primary text-primary-foreground font-semibold text-lg sm:text-xl z-10"
+                  >
+                    {index + 1}
                   </div>
-                )}
+                  {index < transformationSteps.length - 1 && (
+                    <div className="mt-1 w-0.5 flex-grow bg-border"></div>
+                  )}
+                </div>
 
-                {/* Content Card - col-start and row-start now apply from lg */}
-                {/* Odd steps (index 0, 2, 4 -> stepNumber 1, 3, 5) go to col-start-1 (left) */}
-                {/* Even steps (index 1, 3 -> stepNumber 2, 4) go to col-start-2 (right) */}
-                <div className={`lg:col-start-${index % 2 === 0 ? 1 : 2} lg:row-start-1`}>
+                {/* Right Column: Card Content */}
+                <div className="flex-grow mt-0 sm:mt-1"> {/* Adjusted mt for better alignment */}
                   <TransformationStepCard
-                    stepNumber={index + 1}
                     title={step.title}
                     description={step.description}
                     icon={step.icon}
                   />
                 </div>
-
-                {/* Connecting Dot for Desktop - now shown from lg upwards */}
-                <div className="hidden lg:flex absolute top-1/2 left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 -translate-y-1/2 border-4 border-background"></div>
               </div>
             ))}
           </div>
