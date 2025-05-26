@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ShipIcon, Menu } from 'lucide-react';
+import { ShipIcon, Menu, BookOpenText } from 'lucide-react'; // Added BookOpenText for Our Insights
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -9,7 +9,7 @@ const navItems = [
   { label: 'Services', href: '/services' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Transformation Guide', href: '/transformation-guide' },
-  { label: 'SEO Optimizer', href: '/seo-optimizer' },
+  { label: 'Our Insights', href: '/our-insights' }, // Changed from SEO Optimizer
   { label: 'Contact Us', href: '/contact' },
 ];
 

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import PageContainer from '@/components/shared/PageContainer';
 import { getProjectBySlug, Project } from '@/lib/projects-data';
 import CaseStudyDisplay from '@/components/features/portfolio/CaseStudyDisplay';
-import SeoOptimizerForm from '@/components/features/seo/SeoOptimizerForm';
+// SeoOptimizerForm import removed
 import { Badge } from '@/components/ui/badge';
 import { CalendarDays, Briefcase, Settings2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -99,10 +99,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </aside>
         </div>
 
-        <section className="py-12 border-t">
-          <h2 className="text-3xl font-bold text-center mb-8">Optimize This Case Study's SEO</h2>
-          <SeoOptimizerForm initialContent={project.caseStudyMarkdown} />
-        </section>
+        {/* SEO Optimizer section removed */}
       </article>
     </PageContainer>
   );
