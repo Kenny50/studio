@@ -90,7 +90,7 @@ export default async function Home({ params: { locale } }: { params: { locale: s
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 md:py-24 bg-secondary/30 rounded-lg">
+      <section className="py-16 md:py-24 px-6 md:px-10 bg-secondary/30 rounded-lg">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-6">{t('home_page.why_partner_title')}</h2>
@@ -122,7 +122,7 @@ export default async function Home({ params: { locale } }: { params: { locale: s
           <div>
             <Image
               src="https://placehold.co/600x400.png"
-              alt="Team collaborating"
+              alt={t('home_page.why_partner_title')} // Using title as a fallback, ideally a more descriptive key for alt text
               width={600}
               height={400}
               className="rounded-lg shadow-xl"
