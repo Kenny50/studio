@@ -1,8 +1,10 @@
+
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import ArticleCard from '@/components/features/insights/ArticleCard';
 import { articlesData } from '@/lib/insights-data';
 import { BookOpenText } from 'lucide-react';
+import NewsletterSubscribeForm from '@/components/features/newsletter/NewsletterSubscribeForm'; // Added import
 
 export const metadata: Metadata = {
   title: 'Our Insights',
@@ -35,6 +37,22 @@ export default function OurInsightsPage() {
           </p>
         )}
       </section>
+
+      <section className="py-16 md:py-24 bg-secondary/20 rounded-lg mt-12 shadow-inner">
+        <div className="container mx-auto px-4 md:px-6 text-center max-w-2xl">
+           <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-6">
+             <Mail className="h-10 w-10 text-primary" />
+           </div>
+          <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Newsletter</h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Get the latest articles, news, and insights from Ciaodigi Navigator delivered straight to your inbox. Don't miss out!
+          </p>
+          <NewsletterSubscribeForm ctaText="Subscribe Now" />
+        </div>
+      </section>
     </PageContainer>
   );
 }
+
+// Need to import Mail icon if used in the new section for OurInsightsPage
+import { Mail } from 'lucide-react';
