@@ -4,26 +4,20 @@ import PageContainer from '@/components/shared/PageContainer';
 import TransformationStepCard from '@/components/features/transformation/TransformationStepCard';
 import { ClipboardList, ListChecks, DraftingCompass, Rocket, Repeat } from 'lucide-react';
 import Image from 'next/image';
-// import { getI18n } from '@/locales/server'; // For UI strings
+import { getI18n } from '@/locales/server';
 
-// TODO: Localize metadata
-// export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-//   const t = await getI18n(locale);
-//   return {
-//     title: t('transformation_guide_page.meta_title'),
-//     description: t('transformation_guide_page.meta_description'),
-//   };
-// }
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getI18n(locale);
+  return {
+    title: t('transformation_guide_page.meta_title'),
+    description: t('transformation_guide_page.meta_description'),
+  };
+}
 
-export const metadata: Metadata = {
-  title: 'Digital Transformation Guide',
-  description: 'Understand our step-by-step digital transformation workflow: Assess, Plan, Prototype, Deploy, and Iterate.',
-};
-
-// This data would ideally be localized as well
-const transformationSteps = [
+// TODO: This data should be localized (titles, descriptions)
+const transformationStepsData = [
   {
-    key: 'assess_discover', // for i18n
+    key: 'assess_discover',
     title: 'Assess & Discover',
     description: 'We begin by thoroughly understanding your current processes, challenges, and goals. This involves workshops, stakeholder interviews, and market analysis to identify key opportunities for digital transformation.',
     icon: <ClipboardList className="h-8 w-8 text-primary" />,
@@ -55,45 +49,43 @@ const transformationSteps = [
 ];
 
 export default async function TransformationGuidePage({ params: { locale } }: { params: { locale: string }}) {
-  // const t = await getI18n(locale);
-  // Example for localizing step titles/descriptions if they were in locale files:
-  // const localizedSteps = transformationSteps.map(step => ({
+  const t = await getI18n(locale);
+  // Example for localizing step titles/descriptions if they were in locale files under transformation_guide_page.steps.{key}.title etc.
+  // const localizedSteps = transformationStepsData.map(step => ({
   //   ...step,
   //   title: t(`transformation_guide_page.steps.${step.key}.title`),
   //   description: t(`transformation_guide_page.steps.${step.key}.description`),
   // }));
+  // For now, using the English titles from transformationStepsData
 
   return (
     <PageContainer>
       <section className="text-center py-12 md:py-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Your Journey to Digital Excellence {/* TODO: t('transformation_guide_page.title') */}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">{t('transformation_guide_page.page_title')}</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-          Navigating digital transformation can be complex. Our proven workflow ensures a smooth and effective process, guiding you from initial assessment to ongoing optimization. {/* TODO: t('transformation_guide_page.subtitle') */}
+          {t('transformation_guide_page.subtitle')}
         </p>
       </section>
 
       <section className="py-12 md:py-16">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto"> {/* Was max-w-4xl, reverting for better centered view */}
           <div className="space-y-12">
-            {transformationSteps.map((step, index) => ( // Use original steps for now
-              <div key={step.title} className="flex items-start gap-x-6 sm:gap-x-8">
-                {/* Left Column: Progress Indicator */}
+            {transformationStepsData.map((step, index) => (
+              <div key={step.key} className="flex items-start gap-x-6 sm:gap-x-8">
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div
                     className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-primary bg-primary text-primary-foreground font-semibold text-lg sm:text-xl z-10"
                   >
                     {index + 1}
                   </div>
-                  {index < transformationSteps.length - 1 && (
+                  {index < transformationStepsData.length - 1 && (
                     <div className="mt-1 w-0.5 flex-grow bg-border" style={{minHeight: '4rem'}}></div>
                   )}
                 </div>
-
-                {/* Right Column: Card Content */}
-                <div className="flex-grow mt-0 sm:mt-1 min-w-0"> {/* Added min-w-0 for flex shrink issue */}
+                <div className="flex-grow mt-0 sm:mt-1 min-w-0">
                   <TransformationStepCard
-                    title={step.title}
-                    description={step.description}
+                    title={step.title} // TODO: Localize step.title
+                    description={step.description} // TODO: Localize step.description
                     icon={step.icon}
                   />
                 </div>
@@ -106,18 +98,18 @@ export default async function TransformationGuidePage({ params: { locale } }: { 
       <section className="py-12 md:py-16">
         <div className="grid md:grid-cols-2 gap-12 items-center bg-secondary/30 p-8 md:p-12 rounded-lg shadow-lg">
           <div>
-            <h2 className="text-3xl font-bold mb-6">Partner with Us for Transformation {/* TODO: t('transformation_guide_page.partner_title') */}</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('transformation_guide_page.partner_title')}</h2>
             <p className="text-muted-foreground mb-6">
-              At Ciaodigi Navigator, we're committed to being more than just a service provider. We're your trusted partner in navigating the ever-evolving digital landscape. Our structured approach, combined with our technical expertise and creative thinking, ensures your digital transformation initiatives are successful and sustainable. {/* TODO: t('transformation_guide_page.partner_desc1') */}
+              {t('transformation_guide_page.partner_desc1')}
             </p>
             <p className="text-muted-foreground">
-              Ready to embark on your transformation journey? Let's discuss how we can tailor our process to meet your unique business needs and aspirations. {/* TODO: t('transformation_guide_page.partner_desc2') */}
+              {t('transformation_guide_page.partner_desc2')}
             </p>
           </div>
           <div>
             <Image
               src="https://placehold.co/600x450.png"
-              alt="Digital transformation concept"
+              alt={t('transformation_guide_page.partner_title')} // TODO: More specific alt text
               width={600}
               height={450}
               className="rounded-lg shadow-xl"

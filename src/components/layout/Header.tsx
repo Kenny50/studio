@@ -2,17 +2,20 @@
 "use client"; // Make it a client component to use useI18n hook
 
 import Link from 'next/link';
-import { ShipIcon, Menu } from 'lucide-react';
+import { ShipIcon, Menu, Languages } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { useI18n, useCurrentLocale } from '@/locales/client';
-import { useParams } from 'next/navigation'; // To get locale for links if needed, though next-international handles relative links
 
 export default function Header() {
   const t = useI18n();
-  const currentLocale = useCurrentLocale(); // or useParams().locale
-  // const params = useParams();
-  // const currentLocale = params.locale as string || 'en';
+  const currentLocale = useCurrentLocale();
 
 
   const navItems = [
@@ -25,9 +28,10 @@ export default function Header() {
     { labelKey: 'header.contact_us', href: '/contact' },
   ];
 
-  // Basic locale switcher (example, can be improved)
-  const otherLocale = currentLocale === 'en' ? 'zh' : 'en';
-  const otherLocaleLabel = currentLocale === 'en' ? '中文' : 'English';
+  const locales = [
+    { code: 'en', label: t('header.language_english') },
+    { code: 'zh', label: t('header.language_mandarin') },
+  ];
 
 
   return (
@@ -41,29 +45,51 @@ export default function Header() {
           {navItems.map((item) => (
             <Link
               key={item.labelKey}
-              href={item.href} // next-international handles prefixing for relative links with middleware
+              href={item.href} 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               {t(item.labelKey as any)}
             </Link>
           ))}
-          <Button variant="ghost" size="sm" asChild>
-            <Link href={otherLocale} locale={otherLocale}>
-              {otherLocaleLabel}
-            </Link>
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label={t('header.switch_language_aria_label')}>
+                <Languages className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {locales.map((locale) => (
+                <DropdownMenuItem key={locale.code} asChild>
+                  <Link href={currentLocale === locale.code ? '#' : `/${locale.code}`} locale={locale.code} className={currentLocale === locale.code ? 'font-semibold' : ''}>
+                    {locale.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
         <div className="md:hidden flex items-center">
-           <Button variant="ghost" size="sm" asChild className="mr-2">
-            <Link href={otherLocale} locale={otherLocale}>
-              {otherLocaleLabel}
-            </Link>
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="mr-2" aria-label={t('header.switch_language_aria_label')}>
+                <Languages className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+               {locales.map((locale) => (
+                <DropdownMenuItem key={locale.code} asChild>
+                  <Link href={currentLocale === locale.code ? '#' : `/${locale.code}`} locale={locale.code} className={currentLocale === locale.code ? 'font-semibold' : ''}>
+                    {locale.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
+                <span className="sr-only">{t('header.toggle_navigation_sr_label')}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">

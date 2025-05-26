@@ -9,6 +9,10 @@ export default {
     transformation_guide: 'Transformation Guide',
     our_insights: 'Our Insights',
     contact_us: 'Contact Us',
+    switch_language_aria_label: 'Switch language',
+    language_english: 'English',
+    language_mandarin: '中文 (Mandarin)',
+    toggle_navigation_sr_label: 'Toggle navigation menu',
   },
   footer: {
     tagline: 'Your partner in digital transformation and custom software solutions. We build innovative web and mobile applications to help your business thrive.',
@@ -73,5 +77,81 @@ export default {
     linkedin_button: "LinkedIn",
     close_button: "Close",
   },
-  // Add other pages and components as needed
+  about_page: {
+    meta_title: 'About Ciaodigi Navigator',
+    meta_description: 'Learn about Ciaodigi Navigator, our mission, team, and core values that drive our commitment to digital excellence.',
+    page_title: 'About Ciaodigi Navigator',
+    subtitle: 'We are a passionate team of strategists, designers, and developers dedicated to helping businesses thrive in the digital landscape.',
+    our_story_title: 'Our Story',
+    story_p1: 'Founded in [Year], Ciaodigi Navigator embarked on a mission to demystify digital technology for businesses of all sizes. We saw a need for a partner who not only builds exceptional software but also guides clients through the complexities of digital transformation with clarity and expertise.',
+    story_p2: 'Over the years, we\'ve honed our skills, expanded our team, and successfully delivered numerous projects across various industries. Our journey is fueled by a relentless pursuit of innovation and a deep commitment to our clients\' success. We believe that technology, when wielded thoughtfully, can unlock unprecedented growth and efficiency.',
+    meet_team_title: 'Meet Our Team',
+    core_values_title: 'Our Core Values',
+    // Individual team member bios and core values can be added here or kept in the component if they are less likely to change
+  },
+  contact_page: {
+    meta_title: 'Contact Ciaodigi Navigator',
+    meta_description: 'Get in touch with Ciaodigi Navigator for inquiries, project discussions, or collaborations. We are ready to help you with your digital needs.',
+    page_title: 'Get in Touch',
+    subtitle: "We're excited to hear from you! Whether you have a project idea, a question, or just want to say hello, feel free to reach out through the form below or our contact channels.",
+    send_message_card_title: 'Send Us a Message',
+    contact_info_card_title: 'Contact Information',
+    connect_with_us_card_title: 'Connect With Us',
+    address: '123 Digital Avenue, Tech City, TX 75001, USA',
+  },
+  insights_page: {
+    meta_title: 'Insights from Ciaodigi Navigator',
+    meta_description: 'Explore articles, thoughts, and expertise from the Ciaodigi Navigator team on technology, digital transformation, and industry trends.',
+    page_title: 'Our Insights',
+    subtitle: 'Dive into our collection of articles where we share our knowledge, perspectives, and the latest trends in the digital world.',
+    no_articles: "We're busy crafting insightful content. Check back soon for our latest articles!",
+    newsletter_title: 'Join Our Newsletter',
+    newsletter_description: "Get the latest articles, news, and insights from Ciaodigi Navigator delivered straight to your inbox. Don't miss out!",
+    back_to_insights: 'Back to Insights',
+    published_by: 'Published by',
+    published_on: 'on', // Example: Published by John Doe ON July 30, 2024
+  },
+  article_page: { // For individual article page
+    article_not_found_title: 'Article Not Found',
+    // Metadata for specific articles will come from article data, but UI elements can be here
+    published: 'Published',
+  },
+  portfolio_page: {
+    meta_title: 'Ciaodigi Navigator Portfolio',
+    meta_description: 'Discover a selection of our past projects and case studies, showcasing our expertise and capabilities in delivering impactful digital solutions.',
+    page_title: 'Our Work',
+    subtitle: "We take pride in the solutions we deliver. Explore our portfolio to see how we've helped businesses like yours achieve their digital goals.",
+    no_projects: 'Our project gallery is currently being updated. Check back soon!',
+    view_case_study_button: 'View Case Study',
+  },
+  case_study_page: { // For individual project/case study page
+    case_study_not_found_title: 'Case Study Not Found',
+    project_details_title: 'Project Details',
+    client_label: 'Client:',
+    date_label: 'Date:',
+    services_label: 'Services:',
+  },
+  services_page: {
+    meta_title: 'Services by Ciaodigi Navigator',
+    meta_description: 'Explore the range of services offered by Ciaodigi Navigator, including custom web and mobile development, UI/UX design, and digital strategy.',
+    page_title: 'Our Expertise',
+    subtitle: 'At Ciaodigi Navigator, we offer a comprehensive suite of services designed to empower your business in the digital age. Our team of experts is dedicated to delivering innovative solutions that drive results.',
+    discuss_project_button: 'Discuss Your Project',
+    cta_title: 'Ready to Start Your Digital Journey?',
+    cta_subtitle: "Let's collaborate to turn your ideas into reality. Contact us today for a free consultation.",
+    cta_button: 'Get a Free Quote',
+    // Specific service titles & descriptions can be here if dynamic loading from a single source is not used
+    // E.g., custom_web_dev_title: 'Custom Web Development', custom_web_dev_desc: '...'
+  },
+  transformation_guide_page: {
+    meta_title: 'Digital Transformation Guide by Ciaodigi Navigator',
+    meta_description: 'Understand our step-by-step digital transformation workflow: Assess, Plan, Prototype, Deploy, and Iterate for business success.',
+    page_title: 'Your Journey to Digital Excellence',
+    subtitle: 'Navigating digital transformation can be complex. Our proven workflow ensures a smooth and effective process, guiding you from initial assessment to ongoing optimization.',
+    partner_title: 'Partner with Us for Transformation',
+    partner_desc1: "At Ciaodigi Navigator, we're committed to being more than just a service provider. We're your trusted partner in navigating the ever-evolving digital landscape. Our structured approach, combined with our technical expertise and creative thinking, ensures your digital transformation initiatives are successful and sustainable.",
+    partner_desc2: "Ready to embark on your transformation journey? Let's discuss how we can tailor our process to meet your unique business needs and aspirations.",
+    // Step titles and descriptions can be added if not managed directly in code
+    // E.g., step1_assess_title: 'Assess & Discover', step1_assess_desc: '...'
+  },
 } as const;

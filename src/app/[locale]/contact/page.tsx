@@ -5,31 +5,25 @@ import ContactForm from '@/components/features/contact/ContactForm';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, MapPin, Phone, Linkedin, Twitter, Github } from 'lucide-react';
 import Link from 'next/link';
-// TODO: Add i18n for this page
-// import { getI18n } from '@/locales/server';
+import { getI18n } from '@/locales/server';
 
-// export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-//   const t = await getI18n(locale);
-//   return {
-//     title: t('contact_page.meta_title'), // Example key
-//     description: t('contact_page.meta_description'), // Example key
-//   };
-// }
-
-export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Get in touch with Ciaodigi Navigator for inquiries, project discussions, or collaborations.',
-};
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getI18n(locale);
+  return {
+    title: t('contact_page.meta_title'),
+    description: t('contact_page.meta_description'),
+  };
+}
 
 
-export default function ContactPage() {
-  // const t = await getI18n(); // TODO: Uncomment when translations are ready
+export default async function ContactPage({ params: { locale } }: { params: { locale: string }}) {
+  const t = await getI18n(locale);
   return (
     <PageContainer>
       <section className="text-center py-12 md:py-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Get in Touch</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">{t('contact_page.page_title')}</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-          We're excited to hear from you! Whether you have a project idea, a question, or just want to say hello, feel free to reach out through the form below or our contact channels.
+          {t('contact_page.subtitle')}
         </p>
       </section>
 
@@ -37,10 +31,10 @@ export default function ContactPage() {
         <div className="lg:col-span-2">
           <Card className="shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+              <CardTitle className="text-2xl">{t('contact_page.send_message_card_title')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ContactForm />
+              <ContactForm /> {/* ContactForm already uses useI18n */}
             </CardContent>
           </Card>
         </div>
@@ -48,7 +42,7 @@ export default function ContactPage() {
         <div className="space-y-6">
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle>Contact Information</CardTitle>
+              <CardTitle>{t('contact_page.contact_info_card_title')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-3">
@@ -66,7 +60,7 @@ export default function ContactPage() {
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-1" />
                 <p className="text-muted-foreground">
-                  123 Digital Avenue, Tech City, TX 75001, USA
+                  {t('contact_page.address')}
                 </p>
               </div>
             </CardContent>
@@ -74,16 +68,16 @@ export default function ContactPage() {
 
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle>Connect With Us</CardTitle>
+              <CardTitle>{t('contact_page.connect_with_us_card_title')}</CardTitle>
             </CardHeader>
             <CardContent className="flex gap-4">
-              <Link href="#" aria-label="Twitter" className="p-2 rounded-md bg-secondary hover:bg-primary/20 text-primary">
+              <Link href="#" aria-label={t('footer.social_media.twitter')} className="p-2 rounded-md bg-secondary hover:bg-primary/20 text-primary">
                 <Twitter className="h-6 w-6" />
               </Link>
-              <Link href="#" aria-label="LinkedIn" className="p-2 rounded-md bg-secondary hover:bg-primary/20 text-primary">
+              <Link href="#" aria-label={t('footer.social_media.linkedin')} className="p-2 rounded-md bg-secondary hover:bg-primary/20 text-primary">
                 <Linkedin className="h-6 w-6" />
               </Link>
-              <Link href="#" aria-label="GitHub" className="p-2 rounded-md bg-secondary hover:bg-primary/20 text-primary">
+              <Link href="#" aria-label={t('footer.social_media.github')} className="p-2 rounded-md bg-secondary hover:bg-primary/20 text-primary">
                 <Github className="h-6 w-6" />
               </Link>
             </CardContent>
