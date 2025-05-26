@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import TransformationStepCard from '@/components/features/transformation/TransformationStepCard';
@@ -48,7 +49,7 @@ export default function TransformationGuidePage() {
       </section>
 
       <section className="py-12 md:py-16">
-        <div className="relative">
+        <div className="relative max-w-4xl mx-auto"> {/* Added max-w-4xl and mx-auto here */}
           {/* Desktop Timeline */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-border/50 transform -translate-x-1/2"></div>
           
