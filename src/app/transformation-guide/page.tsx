@@ -49,22 +49,26 @@ export default function TransformationGuidePage() {
       </section>
 
       <section className="py-12 md:py-16">
-        <div className="relative max-w-4xl mx-auto"> {/* Added max-w-4xl and mx-auto here */}
-          {/* Desktop Timeline */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-border/50 transform -translate-x-1/2"></div>
+        <div className="relative max-w-4xl mx-auto">
+          {/* Desktop Timeline - now starts at lg */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-border/50 transform -translate-x-1/2"></div>
           
-          <div className="space-y-16 md:space-y-0">
+          {/* space-y-16 applies up to lg, then lg:space-y-0 */}
+          <div className="space-y-16 lg:space-y-0">
             {transformationSteps.map((step, index) => (
-              <div key={step.title} className="md:grid md:grid-cols-2 md:gap-8 items-center relative mb-8 md:mb-0">
-                {/* Icon and Line for Mobile */}
+              // grid, grid-cols-2, gap-8 now apply from lg. mb-8 applies up to lg.
+              <div key={step.title} className="lg:grid lg:grid-cols-2 lg:gap-8 items-center relative mb-8 lg:mb-0">
+                {/* Icon and Line for Mobile/Tablet - now hidden from lg upwards */}
                 {index < transformationSteps.length -1 && (
-                  <div className="md:hidden flex justify-center my-4">
+                  <div className="lg:hidden flex justify-center my-4">
                      <ArrowDown className="h-8 w-8 text-primary/50" />
                   </div>
                 )}
 
-                {/* Content Card */}
-                <div className={`md:col-start-${index % 2 === 0 ? 1 : 2} md:row-start-1`}>
+                {/* Content Card - col-start and row-start now apply from lg */}
+                {/* Odd steps (index 0, 2, 4 -> stepNumber 1, 3, 5) go to col-start-1 (left) */}
+                {/* Even steps (index 1, 3 -> stepNumber 2, 4) go to col-start-2 (right) */}
+                <div className={`lg:col-start-${index % 2 === 0 ? 1 : 2} lg:row-start-1`}>
                   <TransformationStepCard
                     stepNumber={index + 1}
                     title={step.title}
@@ -73,8 +77,8 @@ export default function TransformationGuidePage() {
                   />
                 </div>
 
-                {/* Connecting Dot for Desktop */}
-                <div className="hidden md:flex absolute top-1/2 left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 -translate-y-1/2 border-4 border-background"></div>
+                {/* Connecting Dot for Desktop - now shown from lg upwards */}
+                <div className="hidden lg:flex absolute top-1/2 left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 -translate-y-1/2 border-4 border-background"></div>
               </div>
             ))}
           </div>
