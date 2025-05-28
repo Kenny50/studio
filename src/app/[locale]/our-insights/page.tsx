@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import ArticleCard from '@/components/features/insights/ArticleCard';
-import { articlesData } from '@/lib/insights-data'; // Assuming this data is not yet localized
+import { getAllArticles } from '@/lib/insights'; // Updated import
 import { BookOpenText, Mail } from 'lucide-react';
 import NewsletterSubscribeForm from '@/components/features/newsletter/NewsletterSubscribeForm';
 import { getI18n } from '@/locales/server'; 
@@ -17,6 +17,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 export default async function OurInsightsPage({ params: { locale } }: { params: { locale: string }}) {
   const t = await getI18n(locale);
+  const articles = await getAllArticles(locale); // Fetch localized articles
 
   return (
     <PageContainer>
@@ -31,11 +32,10 @@ export default async function OurInsightsPage({ params: { locale } }: { params: 
       </section>
 
       <section className="py-8">
-        {/* TODO: articlesData needs to be localized if content is translated */}
-        {articlesData.length > 0 ? (
+        {articles.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articlesData.map((article) => (
-              <ArticleCard key={article.id} article={article} /> // ArticleCard itself doesn't need direct t prop, it uses data
+            {articles.map((article) => (
+              <ArticleCard key={article.id} article={article} locale={locale} />
             ))}
           </div>
         ) : (
@@ -54,7 +54,6 @@ export default async function OurInsightsPage({ params: { locale } }: { params: 
           <p className="text-lg text-muted-foreground mb-8">
             {t('insights_page.newsletter_description')}
           </p>
-          {/* NewsletterSubscribeForm will use its own translations via useI18n */}
           <NewsletterSubscribeForm />
         </div>
       </section>
