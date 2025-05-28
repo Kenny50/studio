@@ -104,7 +104,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
         </Card>
       </section>
 
-      <section className="py-12 md:py-16">
+      {/* <section className="py-12 md:py-16">
         <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.meet_team_title')}</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
@@ -127,7 +127,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
             </Card>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section className="py-12 md:py-16 px-6 md:px-10 bg-secondary/30 rounded-lg">
         <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.core_values_title')}</h2>

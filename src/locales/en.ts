@@ -18,7 +18,7 @@ export default {
     tagline: 'Your partner in digital transformation and custom software solutions. We build innovative web and mobile applications to help your business thrive.',
     copyright: '© {year} Ciaodigi Navigator. All rights reserved.',
     stay_updated: 'Stay Updated',
-    newsletter_description: 'Subscribe to our newsletter for the latest insights, articles, and company updates.',
+    newsletter_description: 'Subscribe to our newsletter for the latest insights, articles.',
     subscribe: 'Subscribe',
     social_media: {
         twitter: 'Twitter',
@@ -139,7 +139,7 @@ export default {
     discuss_project_button: 'Discuss Your Project',
     cta_title: 'Ready to Start Your Digital Journey?',
     cta_subtitle: "Let's collaborate to turn your ideas into reality. Contact us today for a free consultation.",
-    cta_button: 'Get a Free Quote',
+    cta_button: 'Start consultation',
     // Specific service titles & descriptions can be here if dynamic loading from a single source is not used
     // E.g., custom_web_dev_title: 'Custom Web Development', custom_web_dev_desc: '...'
   },
