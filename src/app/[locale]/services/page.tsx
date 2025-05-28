@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Database, Palette, Rocket, Smartphone, TrendingUp } from 'lucide-react';
+import { Briefcase, LayoutGrid, UserPlus } from 'lucide-react'; // Updated icons
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -16,62 +16,35 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-// This data would ideally be localized as well
-// TODO: Localize service titles, descriptions, features
+// Updated servicesData
+// TODO: Localize service titles, descriptions, features in locale files
 const servicesData = [
   {
-    key: 'custom_web_dev',
-    title: 'Custom Web Development',
-    description: 'We build scalable, secure, and high-performance web applications tailored to your specific business needs. From complex enterprise platforms to engaging marketing sites, we deliver excellence.',
-    icon: <Code className="h-10 w-10 text-primary" />,
-    features: ['Full-stack development (React, Node.js, Python, etc.)', 'E-commerce solutions', 'CMS development', 'API integration'],
+    key: 'consulting_services',
+    title: 'Consulting Services',
+    description: 'Strategic guidance, process optimization, and digital roadmapping to align technology with your business objectives and drive growth. We help analyze your business needs and chart a course for digital success.',
+    icon: <Briefcase className="h-10 w-10 text-primary" />,
+    features: ['Business process analysis & optimization', 'Digital strategy development', 'Technology stack consultation', 'Change management support', 'Market research & feasibility studies'],
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'web development'
+    aiHint: 'business consulting'
   },
   {
-    key: 'mobile_app_dev',
-    title: 'Mobile App Development',
-    description: 'Crafting intuitive and powerful mobile applications for iOS and Android. We help you connect with your audience on their favorite devices, enhancing engagement and accessibility.',
-    icon: <Smartphone className="h-10 w-10 text-primary" />,
-    features: ['Native iOS (Swift) & Android (Kotlin/Java)', 'Cross-platform (React Native, Flutter)', 'App store deployment', 'Maintenance & support'],
+    key: 'product_management',
+    title: 'Product Management & Development',
+    description: 'End-to-end product lifecycle management, from ideation and MVP development to market launch and iterative improvement. We ensure your product meets user needs and achieves business goals effectively.',
+    icon: <LayoutGrid className="h-10 w-10 text-primary" />,
+    features: ['Market research & validation', 'Product roadmap & feature prioritization', 'Agile development oversight', 'User story & requirements definition', 'MVP & prototype development'],
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'mobile app'
+    aiHint: 'product management'
   },
   {
-    key: 'ui_ux_design',
-    title: 'UI/UX Design',
-    description: 'User-centric design that is both beautiful and functional. We create seamless digital experiences that delight users and achieve your business objectives.',
-    icon: <Palette className="h-10 w-10 text-primary" />,
-    features: ['User research & personas', 'Wireframing & prototyping', 'Interaction design', 'Usability testing'],
+    key: 'team_recruitment',
+    title: 'Team Recruitment & Augmentation',
+    description: 'Building high-performing tech teams tailored to your project needs. We assist in finding, vetting, and onboarding skilled professionals, or augmenting your existing team with specialized talent.',
+    icon: <UserPlus className="h-10 w-10 text-primary" />,
+    features: ['Technical talent sourcing & screening', 'Skill-based vetting & interviews', 'Team onboarding & integration support', 'Dedicated team model setup', 'Staff augmentation for specific roles'],
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'ui ux design'
-  },
-  {
-    key: 'digital_strategy',
-    title: 'Digital Strategy & Consulting',
-    description: 'Guiding your digital transformation journey with expert insights and actionable strategies. We help you leverage technology to innovate, optimize, and grow.',
-    icon: <TrendingUp className="h-10 w-10 text-primary" />,
-    features: ['Market analysis', 'Technology roadmapping', 'Process automation', 'Data analytics & insights'],
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'digital strategy'
-  },
-  {
-    key: 'cloud_devops',
-    title: 'Cloud Solutions & DevOps',
-    description: 'Modernize your infrastructure with scalable cloud solutions and efficient DevOps practices. We ensure your applications are reliable, secure, and performant.',
-    icon: <Rocket className="h-10 w-10 text-primary" />,
-    features: ['Cloud migration (AWS, Azure, GCP)', 'CI/CD pipeline setup', 'Infrastructure as Code', 'Monitoring & alerting'],
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'cloud devops'
-  },
-   {
-    key: 'data_engineering',
-    title: 'Data Engineering & Analytics',
-    description: 'Unlock the power of your data with our robust data engineering and analytics services. We help you make informed decisions and gain a competitive edge.',
-    icon: <Database className="h-10 w-10 text-primary" />,
-    features: ['Data pipeline development', 'Data warehousing', 'Business intelligence dashboards', 'Machine learning model deployment'],
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'data analytics'
+    aiHint: 'team recruitment'
   },
 ];
 
@@ -90,9 +63,10 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
   //   ...service,
   //   title: t(`services_page.services.${service.key}.title`),
   //   description: t(`services_page.services.${service.key}.description`),
-  //   features: service.features.map((feature, index) => t(`services_page.services.${service.key}.features.${index}`)),
+  //   features: service.features.map((feature, index) => t(`services_page.services.${service.key}.features.${index}`)), // Assuming features are an array of strings
   // }));
-  // For now, using the English titles from servicesData as placeholders
+  // For now, using the English titles from servicesData as placeholders.
+  // You'll need to add entries like 'services_page.services.consulting_services.title', etc., to your locale files.
 
   return (
     <PageContainer>
@@ -105,11 +79,11 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
 
       <section className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-1 gap-12">
         {servicesData.map((service, index) => ( 
-          <Card key={service.title} className={`overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+          <Card key={service.key} className={`overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
             <div className="md:w-1/2">
               <Image
                 src={service.image}
-                alt={service.title} // TODO: Localize alt text
+                alt={service.title} // TODO: Localize alt text with t(`services_page.services.${service.key}.image_alt`)
                 width={600}
                 height={400}
                 className="object-cover w-full h-64 md:h-full"
@@ -121,14 +95,14 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
                 <div className="p-3 bg-primary/10 rounded-md w-fit mb-4">
                   {service.icon}
                 </div>
-                {/* TODO: Localize service.title */}
+                {/* TODO: Localize service.title using t(`services_page.services.${service.key}.title`) */}
                 <CardTitle className="text-2xl">{service.title}</CardTitle> 
               </CardHeader>
               <CardContent className="flex-grow">
-                 {/* TODO: Localize service.description */}
+                 {/* TODO: Localize service.description using t(`services_page.services.${service.key}.description`) */}
                 <CardDescription className="mb-4">{service.description}</CardDescription>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  {/* TODO: Localize service.features */}
+                  {/* TODO: Localize service.features using an array in locale files and mapping, e.g., t(`services_page.services.${service.key}.features.${featureIndex}`) */}
                   {service.features.map(feature => (
                     <li key={feature} className="flex items-center">
                       <CheckIcon className="h-4 w-4 mr-2 text-primary" />
