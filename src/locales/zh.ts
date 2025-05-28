@@ -86,7 +86,7 @@ export default {
     our_story_title: '我們的故事',
     story_p1: '我們理解每個企業的專長不同，該不該數位化、軟體團隊如何管理、人才招募等等，在團隊內突然的擴增就好比交響樂團突然要管理籃球選手，專業領域不同。',
     story_p2: '顧問角色，能以企業角度出發，也會是公正的第三方，我們先為客戶分析問題、制定解決方案，再招募合適的團隊以敏捷開發的方式快速驗證。',
-    meet_team_title: '認識我們的團隊', 
+    meet_team_title: '認識我們的團隊',
     core_values_title: '我們的核心價值',
     core_values_list: [
       { key: 'innovation', title: '創新', description: '我們不斷尋求新的方法來解決問題並創造價值。' },
@@ -192,13 +192,14 @@ export default {
     partner_title: '與我們合作共創轉型',
     partner_desc1: '在 Ciaodigi ，我們不僅是顧問，更是您在快速變動的軟體領域之中的關鍵合作夥伴。我們成熟的流程、專業的知識和創新的思維，為您打造成功且可持續的數位轉型計畫。',
     partner_desc2: '準備好開始數位轉型了嗎？讓我們討論如何根據您獨特的業務需求和願景制定我們的流程。',
+    partner_image_alt: '團隊協作進行數位轉型專案',
     steps: {
         assess_discover: {
             title: "評估與探索",
             description: "我們首先深入了解您目前的流程、挑戰和目標。這包括工作坊、利害關係人訪談和市場分析，以找出數位轉型的關鍵機會。"
         },
         plan_strategize: {
-            title: "規劃與策略制定",
+            title: "規劃与策略制定",
             description: "根據評估結果，我們制定全面的數位轉型藍圖。這包括定義明確的目標、選擇合適的技術，並規劃具有可衡量里程碑的分階段實施計畫。"
         },
         prototype_design: {

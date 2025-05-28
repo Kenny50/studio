@@ -5,6 +5,7 @@ import TransformationStepCard from '@/components/features/transformation/Transfo
 import { ClipboardList, ListChecks, DraftingCompass, Rocket, Repeat } from 'lucide-react';
 import Image from 'next/image';
 import { getI18n } from '@/locales/server';
+import type { ReactNode } from 'react';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getI18n(locale);
@@ -14,49 +15,45 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-// TODO: This data should be localized (titles, descriptions)
-const transformationStepsData = [
+// Base structure for steps including keys and icons
+const baseTransformationSteps = [
   {
     key: 'assess_discover',
-    title: 'Assess & Discover',
-    description: 'We begin by thoroughly understanding your current processes, challenges, and goals. This involves workshops, stakeholder interviews, and market analysis to identify key opportunities for digital transformation.',
     icon: <ClipboardList className="h-8 w-8 text-primary" />,
   },
   {
     key: 'plan_strategize',
-    title: 'Plan & Strategize',
-    description: 'Based on the assessment, we develop a comprehensive digital transformation roadmap. This includes defining clear objectives, selecting appropriate technologies, and outlining a phased implementation plan with measurable milestones.',
     icon: <ListChecks className="h-8 w-8 text-primary" />,
   },
   {
     key: 'prototype_design',
-    title: 'Prototype & Design',
-    description: 'We create interactive prototypes and detailed designs to visualize the proposed solution. This iterative process ensures alignment with your vision and allows for early feedback before full-scale development.',
     icon: <DraftingCompass className="h-8 w-8 text-primary" />,
   },
   {
     key: 'deploy_integrate',
-    title: 'Deploy & Integrate',
-    description: 'Our expert team develops and deploys the solution, ensuring seamless integration with your existing systems. We follow agile methodologies for efficient development and rigorous testing for quality assurance.',
     icon: <Rocket className="h-8 w-8 text-primary" />,
   },
   {
     key: 'iterate_optimize',
-    title: 'Iterate & Optimize',
-    description: 'Post-launch, we continuously monitor performance, gather user feedback, and provide ongoing support. We believe in iterative improvement to ensure your digital solution evolves with your business and market demands.',
     icon: <Repeat className="h-8 w-8 text-primary" />,
   },
 ];
 
+type TransformationStepKey = 'assess_discover' | 'plan_strategize' | 'prototype_design' | 'deploy_integrate' | 'iterate_optimize';
+
+
 export default async function TransformationGuidePage({ params: { locale } }: { params: { locale: string }}) {
   const t = await getI18n(locale);
-  // Example for localizing step titles/descriptions if they were in locale files under transformation_guide_page.steps.{key}.title etc.
-  // const localizedSteps = transformationStepsData.map(step => ({
-  //   ...step,
-  //   title: t(`transformation_guide_page.steps.${step.key}.title`),
-  //   description: t(`transformation_guide_page.steps.${step.key}.description`),
-  // }));
-  // For now, using the English titles from transformationStepsData
+
+  // Localize step titles and descriptions
+  const localizedSteps = baseTransformationSteps.map(step => {
+    const stepKey = step.key as TransformationStepKey; // Type assertion
+    return {
+      ...step,
+      title: t(`transformation_guide_page.steps.${stepKey}.title`),
+      description: t(`transformation_guide_page.steps.${stepKey}.description`),
+    };
+  });
 
   return (
     <PageContainer>
@@ -68,9 +65,9 @@ export default async function TransformationGuidePage({ params: { locale } }: { 
       </section>
 
       <section className="py-12 md:py-16">
-        <div className="max-w-2xl mx-auto"> {/* Was max-w-4xl, reverting for better centered view */}
+        <div className="max-w-2xl mx-auto">
           <div className="space-y-12">
-            {transformationStepsData.map((step, index) => (
+            {localizedSteps.map((step, index) => (
               <div key={step.key} className="flex items-start gap-x-6 sm:gap-x-8">
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div
@@ -78,14 +75,14 @@ export default async function TransformationGuidePage({ params: { locale } }: { 
                   >
                     {index + 1}
                   </div>
-                  {index < transformationStepsData.length - 1 && (
+                  {index < localizedSteps.length - 1 && (
                     <div className="mt-1 w-0.5 flex-grow bg-border" style={{minHeight: '4rem'}}></div>
                   )}
                 </div>
                 <div className="flex-grow mt-0 sm:mt-1 min-w-0">
                   <TransformationStepCard
-                    title={step.title} // TODO: Localize step.title
-                    description={step.description} // TODO: Localize step.description
+                    title={step.title}
+                    description={step.description}
                     icon={step.icon}
                   />
                 </div>
@@ -109,7 +106,7 @@ export default async function TransformationGuidePage({ params: { locale } }: { 
           <div>
             <Image
               src="https://placehold.co/600x450.png"
-              alt={t('transformation_guide_page.partner_title')} // TODO: More specific alt text
+              alt={t('transformation_guide_page.partner_image_alt')}
               width={600}
               height={450}
               className="rounded-lg shadow-xl"
