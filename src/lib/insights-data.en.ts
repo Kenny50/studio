@@ -63,7 +63,7 @@ Old infrastructure and software can be incompatible with modern platforms. Integ
 ---
 
 ### 4. Poor Change Management
-The Singapore Tourism Board emphasizes that success often depends more on *how* you manage the transformation than *what* tech you use. Organizations that adopt structured change management approaches are more likely to succeed.
+Success often depends more on *how* you manage the transformation than *what* tech you use. Organizations that adopt structured change management approaches are more likely to succeed.
 
 **Why it matters:** Even the best tools won’t work if people aren’t ready, trained, or on board.
 

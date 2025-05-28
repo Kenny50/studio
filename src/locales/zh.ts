@@ -159,7 +159,7 @@ export default {
             image_alt: "團隊圍繞著有圖表的桌子討論策略"
         },
         product_management: {
-            title: "產品管理與開發",
+            title: "產品、專案管理",
             description: "端到端的產品生命週期管理，從概念形成、MVP 開發到市場發布和迭代改進。我們確保您的產品滿足用戶需求並有效實現業務目標。",
             features: [
                 "市場研究與驗證",
