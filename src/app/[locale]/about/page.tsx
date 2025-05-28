@@ -4,14 +4,14 @@ import Image from 'next/image';
 import PageContainer from '@/components/shared/PageContainer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, Users } from 'lucide-react';
-import { getI18n } from '@/locales/server';
+import { getScopedI18n } from '@/locales/server'; // Changed from getI18n
 import type { ReactNode } from 'react';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getI18n(locale);
+  const t = await getScopedI18n('about_page', locale);
   return {
-    title: t('about_page.meta_title'),
-    description: t('about_page.meta_description'),
+    title: t('meta_title'),
+    description: t('meta_description'),
   };
 }
 
@@ -59,31 +59,31 @@ const iconMap: Record<CoreValueIconKey, ReactNode> = {
 
 
 export default async function AboutPage({ params: { locale } }: { params: { locale: string }}) {
-  const t = await getI18n(locale);
+  const aboutT = await getScopedI18n('about_page', locale); // Use getScopedI18n for the 'about_page' scope
 
   // Define the expected type for items in the core_values_list
-  type LocalizedCoreValueItem = { key: string; title: string; description: string };
+  // The 'key' should match CoreValueIconKey for type safety with iconMap
+  type LocalizedCoreValueItem = { key: CoreValueIconKey; title: string; description: string };
   
-  // Fetch core values from locale file
-  const localizedCoreValuesData = t('about_page.core_values_list');
+  // Fetch core values from locale file using the scoped translation function
+  const localizedCoreValuesData = aboutT('core_values_list');
 
   let coreValues: Array<{ title: string; description: string; icon: React.ReactNode }> = [];
 
   if (Array.isArray(localizedCoreValuesData)) {
     // Now we are sure it's an array, we can map it.
-    // We also cast the items to the expected LocalizedCoreValueItem type.
+    // We cast the items to the expected LocalizedCoreValueItem type.
     coreValues = (localizedCoreValuesData as LocalizedCoreValueItem[]).map(value => {
-      // Ensure value.key is a valid CoreValueIconKey before accessing iconMap
-      const iconKey = value.key as CoreValueIconKey;
+      // value.key is already typed as CoreValueIconKey if the cast is correct
       return {
-        title: value.title,
-        description: value.description,
-        icon: iconMap[iconKey] || <Award className="h-8 w-8 text-primary" /> // Fallback icon
+        title: value.title, // This should be the translated title from the locale file
+        description: value.description, // This should be the translated description
+        icon: iconMap[value.key] || <Award className="h-8 w-8 text-primary" /> // Fallback icon
       };
     });
   } else {
     console.error(
-      `Error: 'about_page.core_values_list' from locale '${locale}' is not an array or is missing. Received:`,
+      `Error: 'core_values_list' (from scope 'about_page') from locale '${locale}' is not an array or is missing. Received:`,
       localizedCoreValuesData
     );
     // coreValues will remain an empty array, or you can throw an error / handle differently.
@@ -93,27 +93,27 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
   return (
     <PageContainer>
       <section className="text-center py-12 md:py-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">{t('about_page.page_title')}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">{aboutT('page_title')}</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-          {t('about_page.subtitle')}
+          {aboutT('subtitle')}
         </p>
       </section>
 
       <section className="py-12 md:py-16">
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl">{t('about_page.our_story_title')}</CardTitle>
+            <CardTitle className="text-2xl md:text-3xl">{aboutT('our_story_title')}</CardTitle>
           </CardHeader>
           <CardContent className="text-muted-foreground space-y-4">
             <p>
-              {t('about_page.story_p1')}
+              {aboutT('story_p1')}
             </p>
             <p>
-              {t('about_page.story_p2')}
+              {aboutT('story_p2')}
             </p>
              <Image
                 src="https://placehold.co/1200x400.png"
-                alt={t('about_page.our_story_title')} 
+                alt={aboutT('our_story_title')} 
                 width={1200}
                 height={400}
                 className="rounded-lg mt-6 object-cover"
@@ -126,7 +126,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
       {/* 
       TODO: Localize team members section if needed and implement data fetching
       <section className="py-12 md:py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.meet_team_title')}</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">{aboutT('meet_team_title')}</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
             <Card key={member.name} className="text-center shadow-lg hover:shadow-xl transition-shadow">
@@ -152,7 +152,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
       */}
 
       <section className="py-12 md:py-16 px-6 md:px-10 bg-secondary/30 rounded-lg">
-        <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.core_values_title')}</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">{aboutT('core_values_title')}</h2>
         {coreValues.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {coreValues.map((value) => (
@@ -170,7 +170,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
             ))}
           </div>
         ) : (
-           <p className="text-center text-muted-foreground">{t('about_page.core_values_loading_error')}</p>
+           <p className="text-center text-muted-foreground">{aboutT('core_values_loading_error')}</p>
         )}
       </section>
     </PageContainer>
