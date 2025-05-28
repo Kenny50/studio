@@ -66,14 +66,14 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
   type LocalizedCoreValueItem = { key: CoreValueIconKey; title: string; description: string };
   
   // Fetch core values from locale file using the scoped translation function
-  const localizedCoreValuesData = aboutT('core_values_list');
+  const { core_values_list } = (await import(`@/locales/${locale}`)).default.about_page;
 
   let coreValues: Array<{ title: string; description: string; icon: React.ReactNode }> = [];
 
-  if (Array.isArray(localizedCoreValuesData)) {
+  if (Array.isArray(core_values_list)) {
     // Now we are sure it's an array, we can map it.
     // We cast the items to the expected LocalizedCoreValueItem type.
-    coreValues = (localizedCoreValuesData as LocalizedCoreValueItem[]).map(value => {
+    coreValues = (core_values_list as LocalizedCoreValueItem[]).map(value => {
       // value.key is already typed as CoreValueIconKey if the cast is correct
       return {
         title: value.title, // This should be the translated title from the locale file
@@ -84,7 +84,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
   } else {
     console.error(
       `Error: 'core_values_list' (from scope 'about_page') from locale '${locale}' is not an array or is missing. Received:`,
-      localizedCoreValuesData
+      core_values_list
     );
     // coreValues will remain an empty array, or you can throw an error / handle differently.
   }
