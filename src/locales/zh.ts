@@ -94,6 +94,7 @@ export default {
       { key: 'integrity', title: '誠信', description: '我們在所有互動中都以誠實和透明的方式運作。' },
       { key: 'excellence', title: '卓越', description: '我們致力於提供超越期望的高品質解決方案。' },
     ],
+    core_values_loading_error: '核心價值觀目前無法載入。',
     // TODO: 如果團隊成員資訊需要本地化，請在此添加相應的鍵
   },
   contact_page: {
@@ -115,13 +116,11 @@ export default {
     newsletter_title: '訂閱我們的文章',
     newsletter_description: '將 Ciaodigi 的最新文章直接發送到你的信箱！',
     back_to_insights: '返回文章列表',
-    read_article_button: '閱讀文章', // 基於 ArticleCard.tsx 添加
-    // TODO: 如果需要，為單個文章卡片元素添加鍵 (例如作者、日期格式等)
+    read_article_button: '閱讀文章',
   },
   article_page: {
     article_not_found_title: '文章未找到',
     published: '已發佈',
-    // TODO: 為文章詳情頁面添加任何其他 UI 字串
   },
   portfolio_page: {
     meta_title: 'Ciaodigi 成功案例',
@@ -147,7 +146,14 @@ export default {
     cta_title: '準備好開始數位化了嗎？',
     cta_subtitle: '讓我們合作，將您的想法變成現實．立即聯繫。',
     cta_button: '開始諮詢',
-    // TODO: 為單個服務標題、描述、功能添加鍵
+    services: {
+        custom_web_dev: {
+            title: "顧問諮詢服務",
+            description: "流程優化、業務需求定義、團隊招募；以專業知識加速企業擴展。",
+            features: ["特點 1", "特點 2"]
+        },
+        // ... 其他服務
+    }
   },
   transformation_guide_page: {
     meta_title: 'Ciaodigi 數位轉型指南',
@@ -157,6 +163,12 @@ export default {
     partner_title: '與我們合作共創轉型',
     partner_desc1: '在 Ciaodigi ，我們不僅是顧問，更是您在快速變動的軟體領域之中的關鍵合作夥伴。我們成熟的流程、專業的知識和創新的思維，為您打造成功且可持續的數位轉型計畫。',
     partner_desc2: '準備好開始數位轉型了嗎？讓我們討論如何根據您獨特的業務需求和願景制定我們的流程。',
-    // TODO: 為單個轉型步驟標題和描述添加鍵
+    steps: {
+        assess_discover: {
+            title: "評估與探索",
+            description: "我們首先深入了解您目前的流程、挑戰和目標..."
+        },
+        // ... 其他步驟
+    }
   },
 } as const;

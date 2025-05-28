@@ -15,30 +15,17 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-// Team members and core values data could also be localized if needed
-const teamMembers = [
-  {
-    name: 'Alice Wonderland', // TODO: Localize name if needed
-    role: 'CEO & Lead Strategist', // TODO: Localize role
-    imageUrl: 'https://placehold.co/300x300.png',
-    aiHint: 'professional woman',
-    bio: 'Alice drives the vision with over a decade of experience in digital innovation and strategy.' // TODO: Localize bio
-  },
-  {
-    name: 'Bob The Builder', // TODO: Localize name
-    role: 'CTO & Head of Engineering', // TODO: Localize role
-    imageUrl: 'https://placehold.co/300x300.png',
-    aiHint: 'professional man',
-    bio: 'Bob leads our talented engineering team, ensuring technical excellence and cutting-edge solutions.' // TODO: Localize bio
-  },
-  {
-    name: 'Carol Danvers', // TODO: Localize name
-    role: 'Lead UX/UI Designer', // TODO: Localize role
-    imageUrl: 'https://placehold.co/300x300.png',
-    aiHint: 'creative designer',
-    bio: 'Carol crafts intuitive and beautiful user experiences that captivate and engage.' // TODO: Localize bio
-  },
-];
+// Team members data (example, consider localizing if names/roles change per locale)
+// const teamMembers = [
+//   {
+//     name: 'Alice Wonderland',
+//     role: 'CEO & Lead Strategist',
+//     imageUrl: 'https://placehold.co/300x300.png',
+//     aiHint: 'professional woman',
+//     bio: 'Alice drives the vision with over a decade of experience in digital innovation and strategy.'
+//   },
+//   // ... other team members
+// ];
 
 // Helper Icon Components (could be moved to a separate file if used widely)
 function LightbulbIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -74,15 +61,33 @@ const iconMap: Record<CoreValueIconKey, ReactNode> = {
 export default async function AboutPage({ params: { locale } }: { params: { locale: string }}) {
   const t = await getI18n(locale);
 
+  // Define the expected type for items in the core_values_list
+  type LocalizedCoreValueItem = { key: string; title: string; description: string };
+  
   // Fetch core values from locale file
-  // The type assertion is needed because getI18n returns a broad type
-  const localizedCoreValues = t('about_page.core_values_list') as Array<{ key: string; title: string; description: string }>;
+  const localizedCoreValuesData = t('about_page.core_values_list');
 
-  const coreValues = localizedCoreValues.map(value => ({
-    title: value.title,
-    description: value.description,
-    icon: iconMap[value.key as CoreValueIconKey] // Use the key to get the icon component
-  }));
+  let coreValues: Array<{ title: string; description: string; icon: React.ReactNode }> = [];
+
+  if (Array.isArray(localizedCoreValuesData)) {
+    // Now we are sure it's an array, we can map it.
+    // We also cast the items to the expected LocalizedCoreValueItem type.
+    coreValues = (localizedCoreValuesData as LocalizedCoreValueItem[]).map(value => {
+      // Ensure value.key is a valid CoreValueIconKey before accessing iconMap
+      const iconKey = value.key as CoreValueIconKey;
+      return {
+        title: value.title,
+        description: value.description,
+        icon: iconMap[iconKey] || <Award className="h-8 w-8 text-primary" /> // Fallback icon
+      };
+    });
+  } else {
+    console.error(
+      `Error: 'about_page.core_values_list' from locale '${locale}' is not an array or is missing. Received:`,
+      localizedCoreValuesData
+    );
+    // coreValues will remain an empty array, or you can throw an error / handle differently.
+  }
 
 
   return (
@@ -119,7 +124,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
       </section>
 
       {/* 
-      TODO: Localize team members section if needed
+      TODO: Localize team members section if needed and implement data fetching
       <section className="py-12 md:py-16">
         <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.meet_team_title')}</h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -148,21 +153,25 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
 
       <section className="py-12 md:py-16 px-6 md:px-10 bg-secondary/30 rounded-lg">
         <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.core_values_title')}</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {coreValues.map((value) => (
-            <Card key={value.title} className="text-center shadow-lg">
-              <CardHeader>
-                <div className="p-3 bg-primary/10 rounded-md w-fit mx-auto mb-4">
-                  {value.icon}
-                </div>
-                <CardTitle>{value.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        {coreValues.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {coreValues.map((value) => (
+              <Card key={value.title} className="text-center shadow-lg">
+                <CardHeader>
+                  <div className="p-3 bg-primary/10 rounded-md w-fit mx-auto mb-4">
+                    {value.icon}
+                  </div>
+                  <CardTitle>{value.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-sm">{value.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : (
+           <p className="text-center text-muted-foreground">{t('about_page.core_values_loading_error')}</p>
+        )}
       </section>
     </PageContainer>
   );

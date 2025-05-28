@@ -94,6 +94,7 @@ export default {
       { key: 'integrity', title: 'Integrity', description: 'We operate with honesty and transparency in all our interactions.' },
       { key: 'excellence', title: 'Excellence', description: 'We are committed to delivering high-quality solutions that exceed expectations.' },
     ],
+    core_values_loading_error: 'Core values could not be loaded at this time.',
     // TODO: Add keys for team members if their info needs to be localized
   },
   contact_page: {
@@ -104,7 +105,7 @@ export default {
     send_message_card_title: 'Send Us a Message',
     contact_info_card_title: 'Contact Information',
     connect_with_us_card_title: 'Connect With Us',
-    address: 'ciaodigi@gmail.com',
+    address: 'ciaodigi@gmail.com', // This is an email, not a physical address string
   },
   insights_page: {
     meta_title: 'Ciaodigi\'s Insights',
@@ -115,13 +116,11 @@ export default {
     newsletter_title: 'Join Our Newsletter',
     newsletter_description: "Get Ciaodigi's latest articles delivered directly to your inbox!",
     back_to_insights: 'Back to Insights',
-    read_article_button: 'Read Article', // Added based on ArticleCard.tsx
-    // TODO: Add keys for individual article card elements if needed (author, date format etc.)
+    read_article_button: 'Read Article',
   },
   article_page: {
     article_not_found_title: 'Article Not Found',
     published: 'Published',
-    // TODO: Add any other UI strings for the article detail page
   },
   portfolio_page: {
     meta_title: 'Ciaodigi Success Stories',
@@ -148,6 +147,14 @@ export default {
     cta_subtitle: 'Let\'s collaborate to turn your ideas into reality. Contact us today.',
     cta_button: 'Start Consultation',
     // TODO: Add keys for individual service titles, descriptions, features
+    services: { // Placeholder structure for individual services
+      custom_web_dev: {
+        title: "Consulting Services",
+        description: "Process optimization, business requirements, team recruitment; accelerating business expansion with professional expertise.",
+        features: ["Feature 1", "Feature 2"]
+      },
+      // ... other services
+    }
   },
   transformation_guide_page: {
     meta_title: 'Ciaodigi Digital Transformation Guide',
@@ -157,6 +164,12 @@ export default {
     partner_title: 'Partner with Us for Transformation',
     partner_desc1: 'At Ciaodigi, we are not just consultants but key partners in the rapidly changing software field. Our mature processes, professional knowledge, and innovative thinking create successful and sustainable digital transformation plans for you.',
     partner_desc2: 'Ready to embark on your transformation journey? Let\'s discuss how we can tailor our process to meet your unique business needs and aspirations.',
-    // TODO: Add keys for individual transformation step titles and descriptions
+    steps: { // Placeholder structure for steps
+      assess_discover: {
+        title: "Assess & Discover",
+        description: "We begin by thoroughly understanding your current processes, challenges, and goals..."
+      },
+      // ... other steps
+    }
   },
 } as const;
