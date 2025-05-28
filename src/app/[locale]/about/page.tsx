@@ -5,6 +5,7 @@ import PageContainer from '@/components/shared/PageContainer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, Users } from 'lucide-react';
 import { getI18n } from '@/locales/server';
+import type { ReactNode } from 'react';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getI18n(locale);
@@ -58,17 +59,30 @@ function ShieldIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+// Define a type for the icon map keys
+type CoreValueIconKey = 'innovation' | 'collaboration' | 'integrity' | 'excellence';
+
+// Map of icon keys to icon components
+const iconMap: Record<CoreValueIconKey, ReactNode> = {
+  innovation: <LightbulbIcon className="h-8 w-8 text-primary" />,
+  collaboration: <Users className="h-8 w-8 text-primary" />,
+  integrity: <ShieldIcon className="h-8 w-8 text-primary" />,
+  excellence: <Award className="h-8 w-8 text-primary" />,
+};
+
 
 export default async function AboutPage({ params: { locale } }: { params: { locale: string }}) {
   const t = await getI18n(locale);
 
-  const coreValues = [
-    // TODO: Localize titles and descriptions
-    { title: 'Innovation', description: 'We constantly seek new ways to solve problems and create value.', icon: <LightbulbIcon className="h-8 w-8 text-primary" /> },
-    { title: 'Collaboration', description: 'We believe the best results come from working closely with our clients and as a team.', icon: <Users className="h-8 w-8 text-primary" /> },
-    { title: 'Integrity', description: 'We operate with honesty and transparency in all our interactions.', icon: <ShieldIcon className="h-8 w-8 text-primary" /> },
-    { title: 'Excellence', description: 'We are committed to delivering high-quality solutions that exceed expectations.', icon: <Award className="h-8 w-8 text-primary" /> },
-  ];
+  // Fetch core values from locale file
+  // The type assertion is needed because getI18n returns a broad type
+  const localizedCoreValues = t('about_page.core_values_list') as Array<{ key: string; title: string; description: string }>;
+
+  const coreValues = localizedCoreValues.map(value => ({
+    title: value.title,
+    description: value.description,
+    icon: iconMap[value.key as CoreValueIconKey] // Use the key to get the icon component
+  }));
 
 
   return (
@@ -94,7 +108,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
             </p>
              <Image
                 src="https://placehold.co/1200x400.png"
-                alt={t('about_page.our_story_title')} // TODO: Add more specific alt text key
+                alt={t('about_page.our_story_title')} 
                 width={1200}
                 height={400}
                 className="rounded-lg mt-6 object-cover"
@@ -104,7 +118,9 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
         </Card>
       </section>
 
-      {/* <section className="py-12 md:py-16">
+      {/* 
+      TODO: Localize team members section if needed
+      <section className="py-12 md:py-16">
         <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.meet_team_title')}</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
@@ -127,7 +143,8 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
             </Card>
           ))}
         </div>
-      </section> */}
+      </section> 
+      */}
 
       <section className="py-12 md:py-16 px-6 md:px-10 bg-secondary/30 rounded-lg">
         <h2 className="text-3xl font-bold text-center mb-12">{t('about_page.core_values_title')}</h2>

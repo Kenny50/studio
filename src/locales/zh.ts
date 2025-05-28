@@ -1,6 +1,6 @@
 
 export default {
-  company_name: 'Ciaodigi Navigator',
+  company_name: 'Ciaodigi',
   header: {
     home: '首頁',
     about_us: '關於我們',
@@ -86,8 +86,15 @@ export default {
     our_story_title: '我們的故事',
     story_p1: '我們理解每個企業的專長不同，該不該數位化、軟體團隊如何管理、人才招募等等，在團隊內突然的擴增就好比交響樂團突然要管理籃球選手，專業領域不同。',
     story_p2: '顧問角色，能以企業角度出發，也會是公正的第三方，我們先為客戶分析問題、制定解決方案，再招募合適的團隊以敏捷開發的方式快速驗證。',
-    meet_team_title: '認識我們的團隊',
+    meet_team_title: '認識我們的團隊', // 預留位置
     core_values_title: '我們的核心價值',
+    core_values_list: [
+      { key: 'innovation', title: '創新', description: '我們不斷尋求新的方法來解決問題並創造價值。' },
+      { key: 'collaboration', title: '合作', description: '我們相信最好的結果來自於與客戶和團隊緊密合作。' },
+      { key: 'integrity', title: '誠信', description: '我們在所有互動中都以誠實和透明的方式運作。' },
+      { key: 'excellence', title: '卓越', description: '我們致力於提供超越期望的高品質解決方案。' },
+    ],
+    // TODO: 如果團隊成員資訊需要本地化，請在此添加相應的鍵
   },
   contact_page: {
     meta_title: '聯繫 Ciaodigi ',
@@ -108,12 +115,13 @@ export default {
     newsletter_title: '訂閱我們的文章',
     newsletter_description: '將 Ciaodigi 的最新文章直接發送到你的信箱！',
     back_to_insights: '返回文章列表',
-    published_by: '作者',
-    published_on: '於', // 示例: 发布者 张三 于 2024年7月30日
+    read_article_button: '閱讀文章', // 基於 ArticleCard.tsx 添加
+    // TODO: 如果需要，為單個文章卡片元素添加鍵 (例如作者、日期格式等)
   },
   article_page: {
     article_not_found_title: '文章未找到',
     published: '已發佈',
+    // TODO: 為文章詳情頁面添加任何其他 UI 字串
   },
   portfolio_page: {
     meta_title: 'Ciaodigi 成功案例',
@@ -139,6 +147,7 @@ export default {
     cta_title: '準備好開始數位化了嗎？',
     cta_subtitle: '讓我們合作，將您的想法變成現實．立即聯繫。',
     cta_button: '開始諮詢',
+    // TODO: 為單個服務標題、描述、功能添加鍵
   },
   transformation_guide_page: {
     meta_title: 'Ciaodigi 數位轉型指南',
@@ -148,5 +157,6 @@ export default {
     partner_title: '與我們合作共創轉型',
     partner_desc1: '在 Ciaodigi ，我們不僅是顧問，更是您在快速變動的軟體領域之中的關鍵合作夥伴。我們成熟的流程、專業的知識和創新的思維，為您打造成功且可持續的數位轉型計畫。',
     partner_desc2: '準備好開始數位轉型了嗎？讓我們討論如何根據您獨特的業務需求和願景制定我們的流程。',
+    // TODO: 為單個轉型步驟標題和描述添加鍵
   },
 } as const;

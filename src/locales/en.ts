@@ -1,6 +1,6 @@
 
 export default {
-  company_name: 'Ciaodigi Navigator',
+  company_name: 'Ciaodigi',
   header: {
     home: 'Home',
     about_us: 'About Us',
@@ -29,26 +29,26 @@ export default {
   home_page: {
     meta_title: 'Ciaodigi | Digital Transformation Consultant',
     meta_description: 'Digital transformation and software solutions.',
-    hero_title_part1: 'Explore digital transformation with ', // Derived from '與' and '一起探索數位轉型'
+    hero_title_part1: 'Explore digital transformation with ',
     hero_title_highlight: 'Ciaodigi',
-    // hero_title_part2 is intentionally omitted for English, matching component logic
+    hero_title_part2: '', // English doesn't typically need a trailing particle like '一起探索數位轉型'
     hero_subtitle: 'We partner with businesses to create innovative solutions, planning every step of your digital transformation.',
     contact_us_button: 'Contact Us',
     learn_services_button: 'Learn Services',
     core_offerings_title: 'Core Services',
-    custom_web_dev_title: 'Consulting Services', // Based on zh.ts '顧問諮詢'
-    custom_web_dev_desc: 'Process optimization, business requirements, team recruitment; accelerating business expansion with professional expertise.', // Based on zh.ts description
-    mobile_app_solutions_title: 'Web / App Development', // Based on zh.ts '網頁/ APP'
-    mobile_app_solutions_desc: 'Custom-tailored software solutions for businesses.', // Based on zh.ts description
+    custom_web_dev_title: 'Consulting Services',
+    custom_web_dev_desc: 'Process optimization, business requirements, team recruitment; accelerating business expansion with professional expertise.',
+    mobile_app_solutions_title: 'Web / App Development',
+    mobile_app_solutions_desc: 'Custom-tailored software solutions for businesses.',
     digital_transformation_title: 'Digital Transformation',
-    digital_transformation_desc: 'Strategic guidance and professional execution, solving business problems with software tools.', // Based on zh.ts description
+    digital_transformation_desc: 'Strategic guidance and professional execution, solving business problems with software tools.',
     why_partner_title: 'Why Partner with Ciaodigi?',
     why_partner_desc: 'We excel at understanding clients\' unique challenges and goals to provide solutions with real impact. While other software companies might tell you AI-generated code is unstable, the teams we recruit have already integrated AI into production, perfectly balancing stability and efficiency.',
     client_centric: 'Client-Centric Approach',
     expert_team: 'Expert Team & Proven Process',
-    quality_scalability: 'Focus on Quality & Stability', // From zh.ts '注重品質和穩定性'
+    quality_scalability: 'Focus on Quality & Stability',
     transparent_communication: 'Transparent Communication',
-    learn_more_about_us_button: 'Learn More', // From zh.ts '瞭解更多'
+    learn_more_about_us_button: 'Learn More',
   },
   contact_form: {
     send_message_button: 'Send Message',
@@ -58,8 +58,8 @@ export default {
     email_label: 'Email Address',
     email_placeholder: 'e.g., user@example.com',
     subject_label: 'Subject',
-    subject_placeholder: 'Inquiry about digitizing company processes', // Based on zh.ts
-    message_label: 'Your Message', // '訊息內容' -> 'Message Content' or 'Your Message'
+    subject_placeholder: 'Inquiry about digitizing company processes',
+    message_label: 'Your Message',
     message_placeholder: 'Please describe your project or inquiry in detail...',
     success_title: 'Message Sent!',
     success_description: 'Thank you for contacting us. We will get back to you soon.',
@@ -86,8 +86,15 @@ export default {
     our_story_title: 'Our Story',
     story_p1: 'We understand that every business has different specializations. Decisions about digitalization, software team management, talent recruitment, etc., can feel like a symphony orchestra suddenly trying to manage basketball players when expertise areas differ.',
     story_p2: 'As consultants, we approach from the business perspective and act as an impartial third party. We first analyze client problems, develop solutions, and then recruit suitable teams to rapidly validate through agile development.',
-    meet_team_title: 'Meet Our Team',
+    meet_team_title: 'Meet Our Team', // Placeholder
     core_values_title: 'Our Core Values',
+    core_values_list: [
+      { key: 'innovation', title: 'Innovation', description: 'We constantly seek new ways to solve problems and create value.' },
+      { key: 'collaboration', title: 'Collaboration', description: 'We believe the best results come from working closely with our clients and as a team.' },
+      { key: 'integrity', title: 'Integrity', description: 'We operate with honesty and transparency in all our interactions.' },
+      { key: 'excellence', title: 'Excellence', description: 'We are committed to delivering high-quality solutions that exceed expectations.' },
+    ],
+    // TODO: Add keys for team members if their info needs to be localized
   },
   contact_page: {
     meta_title: 'Contact Ciaodigi',
@@ -97,7 +104,7 @@ export default {
     send_message_card_title: 'Send Us a Message',
     contact_info_card_title: 'Contact Information',
     connect_with_us_card_title: 'Connect With Us',
-    address: 'ciaodigi@gmail.com', // Value from zh.ts
+    address: 'ciaodigi@gmail.com',
   },
   insights_page: {
     meta_title: 'Ciaodigi\'s Insights',
@@ -108,12 +115,13 @@ export default {
     newsletter_title: 'Join Our Newsletter',
     newsletter_description: "Get Ciaodigi's latest articles delivered directly to your inbox!",
     back_to_insights: 'Back to Insights',
-    published_by: 'Author', // '作者'
-    published_on: 'on', // '於'
+    read_article_button: 'Read Article', // Added based on ArticleCard.tsx
+    // TODO: Add keys for individual article card elements if needed (author, date format etc.)
   },
   article_page: {
     article_not_found_title: 'Article Not Found',
     published: 'Published',
+    // TODO: Add any other UI strings for the article detail page
   },
   portfolio_page: {
     meta_title: 'Ciaodigi Success Stories',
@@ -139,6 +147,7 @@ export default {
     cta_title: 'Ready to Start Your Digital Journey?',
     cta_subtitle: 'Let\'s collaborate to turn your ideas into reality. Contact us today.',
     cta_button: 'Start Consultation',
+    // TODO: Add keys for individual service titles, descriptions, features
   },
   transformation_guide_page: {
     meta_title: 'Ciaodigi Digital Transformation Guide',
@@ -148,5 +157,6 @@ export default {
     partner_title: 'Partner with Us for Transformation',
     partner_desc1: 'At Ciaodigi, we are not just consultants but key partners in the rapidly changing software field. Our mature processes, professional knowledge, and innovative thinking create successful and sustainable digital transformation plans for you.',
     partner_desc2: 'Ready to embark on your transformation journey? Let\'s discuss how we can tailor our process to meet your unique business needs and aspirations.',
+    // TODO: Add keys for individual transformation step titles and descriptions
   },
 } as const;
