@@ -31,7 +31,7 @@ export default {
     meta_description: 'Digital transformation and software solutions.',
     hero_title_part1: 'Explore digital transformation with ',
     hero_title_highlight: 'Ciaodigi',
-    hero_title_part2: '', // English doesn't typically need a trailing particle like '一起探索數位轉型'
+    hero_title_part2: '', 
     hero_subtitle: 'We partner with businesses to create innovative solutions, planning every step of your digital transformation.',
     contact_us_button: 'Contact Us',
     learn_services_button: 'Learn Services',
@@ -86,7 +86,7 @@ export default {
     our_story_title: 'Our Story',
     story_p1: 'We understand that every business has different specializations. Decisions about digitalization, software team management, talent recruitment, etc., can feel like a symphony orchestra suddenly trying to manage basketball players when expertise areas differ.',
     story_p2: 'As consultants, we approach from the business perspective and act as an impartial third party. We first analyze client problems, develop solutions, and then recruit suitable teams to rapidly validate through agile development.',
-    meet_team_title: 'Meet Our Team', // Placeholder
+    meet_team_title: 'Meet Our Team', 
     core_values_title: 'Our Core Values',
     core_values_list: [
       { key: 'innovation', title: 'Innovation', description: 'We constantly seek new ways to solve problems and create value.' },
@@ -95,7 +95,6 @@ export default {
       { key: 'excellence', title: 'Excellence', description: 'We are committed to delivering high-quality solutions that exceed expectations.' },
     ],
     core_values_loading_error: 'Core values could not be loaded at this time.',
-    // TODO: Add keys for team members if their info needs to be localized
   },
   contact_page: {
     meta_title: 'Contact Ciaodigi',
@@ -105,7 +104,7 @@ export default {
     send_message_card_title: 'Send Us a Message',
     contact_info_card_title: 'Contact Information',
     connect_with_us_card_title: 'Connect With Us',
-    address: 'ciaodigi@gmail.com', // This is an email, not a physical address string
+    address: 'ciaodigi@gmail.com', 
   },
   insights_page: {
     meta_title: 'Ciaodigi\'s Insights',
@@ -146,14 +145,43 @@ export default {
     cta_title: 'Ready to Start Your Digital Journey?',
     cta_subtitle: 'Let\'s collaborate to turn your ideas into reality. Contact us today.',
     cta_button: 'Start Consultation',
-    // TODO: Add keys for individual service titles, descriptions, features
-    services: { // Placeholder structure for individual services
-      custom_web_dev: {
+    services: { 
+      consulting_services: {
         title: "Consulting Services",
-        description: "Process optimization, business requirements, team recruitment; accelerating business expansion with professional expertise.",
-        features: ["Feature 1", "Feature 2"]
+        description: "Strategic guidance, process optimization, and digital roadmapping to align technology with your business objectives and drive growth. We help analyze your business needs and chart a course for digital success.",
+        features: [
+          "Business process analysis & optimization",
+          "Digital strategy development",
+          "Technology stack consultation",
+          "Change management support",
+          "Market research & feasibility studies"
+        ],
+        image_alt: "Team discussing strategy around a table with charts"
       },
-      // ... other services
+      product_management: {
+        title: "Product Management & Development",
+        description: "End-to-end product lifecycle management, from ideation and MVP development to market launch and iterative improvement. We ensure your product meets user needs and achieves business goals effectively.",
+        features: [
+          "Market research & validation",
+          "Product roadmap & feature prioritization",
+          "Agile development oversight",
+          "User story & requirements definition",
+          "MVP & prototype development"
+        ],
+        image_alt: "Kanban board with sticky notes for product management"
+      },
+      team_recruitment: {
+        title: "Team Recruitment & Augmentation",
+        description: "Building high-performing tech teams tailored to your project needs. We assist in finding, vetting, and onboarding skilled professionals, or augmenting your existing team with specialized talent.",
+        features: [
+          "Technical talent sourcing & screening",
+          "Skill-based vetting & interviews",
+          "Team onboarding & integration support",
+          "Dedicated team model setup",
+          "Staff augmentation for specific roles"
+        ],
+        image_alt: "Diverse group of professionals in a collaborative meeting"
+      }
     }
   },
   transformation_guide_page: {
@@ -164,12 +192,27 @@ export default {
     partner_title: 'Partner with Us for Transformation',
     partner_desc1: 'At Ciaodigi, we are not just consultants but key partners in the rapidly changing software field. Our mature processes, professional knowledge, and innovative thinking create successful and sustainable digital transformation plans for you.',
     partner_desc2: 'Ready to embark on your transformation journey? Let\'s discuss how we can tailor our process to meet your unique business needs and aspirations.',
-    steps: { // Placeholder structure for steps
+    steps: { 
       assess_discover: {
         title: "Assess & Discover",
-        description: "We begin by thoroughly understanding your current processes, challenges, and goals..."
+        description: "We begin by thoroughly understanding your current processes, challenges, and goals. This involves workshops, stakeholder interviews, and market analysis to identify key opportunities for digital transformation."
       },
-      // ... other steps
+      plan_strategize: {
+        title: "Plan & Strategize",
+        description: "Based on the assessment, we develop a comprehensive digital transformation roadmap. This includes defining clear objectives, selecting appropriate technologies, and outlining a phased implementation plan with measurable milestones."
+      },
+      prototype_design: {
+        title: "Prototype & Design",
+        description: "We create interactive prototypes and detailed designs to visualize the proposed solution. This iterative process ensures alignment with your vision and allows for early feedback before full-scale development."
+      },
+      deploy_integrate: {
+        title: "Deploy & Integrate",
+        description: "Our expert team develops and deploys the solution, ensuring seamless integration with your existing systems. We follow agile methodologies for efficient development and rigorous testing for quality assurance."
+      },
+      iterate_optimize: {
+        title: "Iterate & Optimize",
+        description: "Post-launch, we continuously monitor performance, gather user feedback, and provide ongoing support. We believe in iterative improvement to ensure your digital solution evolves with your business and market demands."
+      }
     }
   },
 } as const;

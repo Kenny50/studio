@@ -86,7 +86,7 @@ export default {
     our_story_title: '我們的故事',
     story_p1: '我們理解每個企業的專長不同，該不該數位化、軟體團隊如何管理、人才招募等等，在團隊內突然的擴增就好比交響樂團突然要管理籃球選手，專業領域不同。',
     story_p2: '顧問角色，能以企業角度出發，也會是公正的第三方，我們先為客戶分析問題、制定解決方案，再招募合適的團隊以敏捷開發的方式快速驗證。',
-    meet_team_title: '認識我們的團隊', // 預留位置
+    meet_team_title: '認識我們的團隊', 
     core_values_title: '我們的核心價值',
     core_values_list: [
       { key: 'innovation', title: '創新', description: '我們不斷尋求新的方法來解決問題並創造價值。' },
@@ -95,7 +95,6 @@ export default {
       { key: 'excellence', title: '卓越', description: '我們致力於提供超越期望的高品質解決方案。' },
     ],
     core_values_loading_error: '核心價值觀目前無法載入。',
-    // TODO: 如果團隊成員資訊需要本地化，請在此添加相應的鍵
   },
   contact_page: {
     meta_title: '聯繫 Ciaodigi ',
@@ -147,12 +146,42 @@ export default {
     cta_subtitle: '讓我們合作，將您的想法變成現實．立即聯繫。',
     cta_button: '開始諮詢',
     services: {
-        custom_web_dev: {
+        consulting_services: {
             title: "顧問諮詢服務",
-            description: "流程優化、業務需求定義、團隊招募；以專業知識加速企業擴展。",
-            features: ["特點 1", "特點 2"]
+            description: "戰略指導、流程優化和數位化藍圖規劃，使技術與您的業務目標保持一致並推動增長。我們幫助分析您的業務需求並規劃數位成功的路線。",
+            features: [
+                "業務流程分析與優化",
+                "數位化戰略制定",
+                "技術棧諮詢",
+                "變革管理支持",
+                "市場研究與可行性分析"
+            ],
+            image_alt: "團隊圍繞著有圖表的桌子討論策略"
         },
-        // ... 其他服務
+        product_management: {
+            title: "產品管理與開發",
+            description: "端到端的產品生命週期管理，從概念形成、MVP 開發到市場發布和迭代改進。我們確保您的產品滿足用戶需求並有效實現業務目標。",
+            features: [
+                "市場研究與驗證",
+                "產品路線圖與功能優先級排序",
+                "敏捷開發監督",
+                "用戶故事與需求定義",
+                "MVP 與原型開發"
+            ],
+            image_alt: "帶有便利貼的看板，用於產品管理"
+        },
+        team_recruitment: {
+            title: "團隊招募與擴增",
+            description: "根據您的項目需求建立高效能的技術團隊。我們協助尋找、審查和引導技術嫻熟的專業人士，或用專業人才來擴增您現有的團隊。",
+            features: [
+                "技術人才招募與篩選",
+                "技能審查與面試",
+                "團隊引導與整合支持",
+                "專屬團隊模式建立",
+                "特定職位的人力擴增"
+            ],
+            image_alt: "多元化的專業人士在協作會議中"
+        }
     }
   },
   transformation_guide_page: {
@@ -166,9 +195,24 @@ export default {
     steps: {
         assess_discover: {
             title: "評估與探索",
-            description: "我們首先深入了解您目前的流程、挑戰和目標..."
+            description: "我們首先深入了解您目前的流程、挑戰和目標。這包括工作坊、利害關係人訪談和市場分析，以找出數位轉型的關鍵機會。"
         },
-        // ... 其他步驟
+        plan_strategize: {
+            title: "規劃與策略制定",
+            description: "根據評估結果，我們制定全面的數位轉型藍圖。這包括定義明確的目標、選擇合適的技術，並規劃具有可衡量里程碑的分階段實施計畫。"
+        },
+        prototype_design: {
+            title: "原型設計與介面設計",
+            description: "我們創建互動式原型和詳細設計，以可視化呈現建議的解決方案。這個迭代過程確保與您的願景一致，並允許在全面開發前獲得早期反饋。"
+        },
+        deploy_integrate: {
+            title: "部署與整合",
+            description: "我們的專家團隊開發和部署解決方案，確保與您現有系統無縫整合。我們遵循敏捷方法進行高效開發，並進行嚴格測試以確保品質。"
+        },
+        iterate_optimize: {
+            title: "迭代與優化",
+            description: "上線後，我們持續監控績效、收集用戶反饋並提供持續支持。我們相信迭代改進，以確保您的數位解決方案能隨著您的業務和市場需求而發展。"
+        }
     }
   },
 } as const;
