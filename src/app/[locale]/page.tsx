@@ -121,12 +121,11 @@ export default async function Home({ params: { locale } }: { params: { locale: s
           </div>
           <div>
             <Image
-              src="https://placehold.co/600x400.png"
-              alt={t('home_page.why_partner_title')} // Using title as a fallback, ideally a more descriptive key for alt text
+              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxleHBlcnR8ZW58MHx8fHwxNzQ4OTU2NzgyfDA&ixlib=rb-4.1.0&q=80&w=1080"
+              alt={t('home_page.why_partner_title')} 
               width={600}
               height={400}
-              className="rounded-lg shadow-xl"
-              data-ai-hint="team collaboration"
+              className="rounded-lg shadow-xl object-cover"
             />
           </div>
         </div>
