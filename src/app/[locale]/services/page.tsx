@@ -33,8 +33,8 @@ const baseServicesData = [
   {
     key: 'team_recruitment',
     icon: <UserPlus className="h-10 w-10 text-primary" />,
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'team recruitment'
+    image: 'https://images.unsplash.com/photo-1512168681409-241f42d14bef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzQ4OTU4MDcwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    // aiHint removed as it's no longer a placeholder
   },
 ];
 
