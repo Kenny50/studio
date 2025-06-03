@@ -21,8 +21,8 @@ const baseServicesData = [
   {
     key: 'consulting_services',
     icon: <Briefcase className="h-10 w-10 text-primary" />,
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'business consulting'
+    image: 'https://images.unsplash.com/photo-1565728744382-61accd4aa148?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8Y29uc3VsdGFudHxlbnwwfHx8fDE3NDg5NTcyODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    // aiHint removed as it's no longer a placeholder
   },
   {
     key: 'product_management',
@@ -85,7 +85,7 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
                 width={600}
                 height={400}
                 className="object-cover w-full h-64 md:h-full"
-                data-ai-hint={service.aiHint}
+                {...(service.aiHint ? { 'data-ai-hint': service.aiHint } : {})}
               />
             </div>
             <div className="md:w-1/2 flex flex-col">
