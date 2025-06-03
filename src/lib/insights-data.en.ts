@@ -26,11 +26,11 @@ export const articlesDataEn: Article[] = [
     title: 'Digital Transformation: Challenges and Why You Need to Start',
     summary: 'Digital transformation is no longer optional. It’s a strategic necessity for organizations that want to stay competitive and relevant. But many businesses — especially in the tourism and service sectors — find that their digital efforts stall or fail to deliver real results.',
     imageUrl: 'https://placehold.co/600x400.png',
-    imageAiHint: 'futuristic technology web',
+    imageAiHint: 'digital abstract',
     author: {
       name: 'YungHan Chang',
       avatarUrl: 'https://placehold.co/100x100.png',
-      avatarAiHint: 'Founder'
+      avatarAiHint: 'male portrait'
     },
     date: '2024-07-15',
     tags: ['Digital Transformation', 'Management'],
@@ -117,11 +117,11 @@ Bringing in an IT consultant ensures you have the guidance, structure, and suppo
     title: 'Why Hiring an IT Consultant is a Smart Move for Your Business',
     summary: 'In today’s digital age, technology can make or break a company’s growth. Whether you’re building your first product, expanding your digital capabilities, or facing tech team challenges, hiring an IT consultant might be your best decision yet.',
     imageUrl: 'https://placehold.co/600x400.png',
-    imageAiHint: 'business strategy meeting',
+    imageAiHint: 'consultant meeting',
     author: {
       name: 'YungHan Chang',
       avatarUrl: 'https://placehold.co/100x100.png',
-      avatarAiHint: 'Founder'
+      avatarAiHint: 'male portrait'
     },
     date: '2024-07-15',
     tags: ['Management', 'Business Strategy', 'Technology'],
