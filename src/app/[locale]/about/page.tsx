@@ -112,12 +112,11 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
               {aboutT('story_p2')}
             </p>
              <Image
-                src="https://placehold.co/1200x400.png"
-                alt={aboutT('our_story_title')} 
+                src="https://images.unsplash.com/photo-1587440871875-191322ee64b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjB0aGlua2luZ3xlbnwwfHx8fDE3NDg5NTcxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt={aboutT('our_story_image_alt')}
                 width={1200}
                 height={400}
                 className="rounded-lg mt-6 object-cover"
-                data-ai-hint="company history"
               />
           </CardContent>
         </Card>

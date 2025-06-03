@@ -17,7 +17,7 @@ export default {
   footer: {
     tagline: 'Your digital transformation consultant. We recruit teams for you and build optimal solutions to help your business thrive.',
     copyright: '© {year} Ciaodigi Navigator. All rights reserved.',
-    stay_updated: 'Stay Updated',
+    stay_updated: 'Subscribe to Us',
     newsletter_description: 'Subscribe to get the latest insights, industry news, and articles.',
     subscribe: 'Subscribe',
     social_media: {
@@ -31,7 +31,7 @@ export default {
     meta_description: 'Digital transformation and software solutions.',
     hero_title_part1: 'Explore digital transformation with ',
     hero_title_highlight: 'Ciaodigi',
-    hero_title_part2: '',
+    hero_title_part2: '', // Empty for English
     hero_subtitle: 'We partner with businesses to create innovative solutions, planning every step of your digital transformation.',
     contact_us_button: 'Contact Us',
     learn_services_button: 'Learn Services',
@@ -43,10 +43,11 @@ export default {
     digital_transformation_title: 'Digital Transformation',
     digital_transformation_desc: 'Strategic guidance and professional execution, solving business problems with software tools.',
     why_partner_title: 'Why Partner with Ciaodigi?',
+    why_partner_image_alt: 'Team collaboration in a modern office',
     why_partner_desc: 'We excel at understanding clients\' unique challenges and goals to provide solutions with real impact. While other software companies might tell you AI-generated code is unstable, the teams we recruit have already integrated AI into production, perfectly balancing stability and efficiency.',
     client_centric: 'Client-Centric Approach',
     expert_team: 'Expert Team & Proven Process',
-    quality_scalability: 'Focus on Quality & Stability',
+    quality_scalability: 'Focus on Quality & Stability', // 'Quality & Scalability' in mockup but zh is '穩定性' (Stability)
     transparent_communication: 'Transparent Communication',
     learn_more_about_us_button: 'Learn More',
   },
@@ -63,6 +64,8 @@ export default {
     message_placeholder: 'Please describe your project or inquiry in detail...',
     success_title: 'Message Sent!',
     success_description: 'Thank you for contacting us. We will get back to you soon.',
+    error_title: 'Error Sending Message',
+    error_description: 'There was a problem sending your message. Please try again later or contact us directly via email.',
   },
    newsletter_form: {
     cta_text: "Subscribe",
@@ -84,9 +87,10 @@ export default {
     page_title: 'About Ciaodigi Navigator',
     subtitle: 'We are dedicated to helping businesses thrive through digitalization and process improvement.',
     our_story_title: 'Our Story',
+    our_story_image_alt: 'Design thinking process with sticky notes',
     story_p1: 'We understand that every business has different specializations. Decisions about digitalization, software team management, talent recruitment, etc., can feel like a symphony orchestra suddenly trying to manage basketball players when expertise areas differ.',
     story_p2: 'As consultants, we approach from the business perspective and act as an impartial third party. We first analyze client problems, develop solutions, and then recruit suitable teams to rapidly validate through agile development.',
-    meet_team_title: 'Meet Our Team',
+    meet_team_title: 'Meet Our Team', // TODO: This section is commented out in the page, add if re-enabled
     core_values_title: 'Our Core Values',
     core_values_list: [
       { key: 'innovation', title: 'Innovation', description: 'We constantly seek new ways to solve problems and create value.' },
@@ -104,7 +108,7 @@ export default {
     send_message_card_title: 'Send Us a Message',
     contact_info_card_title: 'Contact Information',
     connect_with_us_card_title: 'Connect With Us',
-    address: 'ciaodigi@gmail.com',
+    address: 'ciaodigi@gmail.com', // This is an email address, not a physical one based on context
   },
   insights_page: {
     meta_title: 'Ciaodigi\'s Insights',
@@ -115,7 +119,7 @@ export default {
     newsletter_title: 'Join Our Newsletter',
     newsletter_description: "Get Ciaodigi's latest articles delivered directly to your inbox!",
     back_to_insights: 'Back to Insights',
-    read_article_button: 'Read Article',
+    read_article_button: 'Read Article', // Used in ArticleCard.tsx
   },
   article_page: {
     article_not_found_title: 'Article Not Found',
@@ -127,7 +131,7 @@ export default {
     page_title: 'Success Stories',
     subtitle: 'Browse our case studies to see how we help businesses achieve their digital goals.',
     no_projects: 'Our project gallery is currently being updated. Please check back soon!',
-    view_case_study_button: 'View Case Study',
+    view_case_study_button: 'View Case Study', // Used in ProjectCard.tsx
   },
   case_study_page: {
     case_study_not_found_title: 'Case Study Not Found',
