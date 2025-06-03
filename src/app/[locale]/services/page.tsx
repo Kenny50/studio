@@ -27,8 +27,8 @@ const baseServicesData = [
   {
     key: 'product_management',
     icon: <LayoutGrid className="h-10 w-10 text-primary" />,
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'product management'
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwcm9qZWN0JTIwbWFuYWdlJTIwcHJvY2Vzc3xlbnwwfHx8fDE3NDg5NTc1Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    // aiHint removed as it's no longer a placeholder
   },
   {
     key: 'team_recruitment',
@@ -128,3 +128,4 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
     </PageContainer>
   );
 }
+
