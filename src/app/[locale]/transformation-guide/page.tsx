@@ -105,12 +105,11 @@ export default async function TransformationGuidePage({ params: { locale } }: { 
           </div>
           <div>
             <Image
-              src="https://placehold.co/600x450.png"
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxN3x8Y29vcGVyYXRlfGVufDB8fHx8MTc0ODk1ODM1NXww&ixlib=rb-4.1.0&q=80&w=1080"
               alt={t('transformation_guide_page.partner_image_alt')}
               width={600}
               height={450}
               className="rounded-lg shadow-xl"
-              data-ai-hint="digital transformation"
             />
           </div>
         </div>
