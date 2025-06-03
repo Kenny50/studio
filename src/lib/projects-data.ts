@@ -1,3 +1,4 @@
+
 export interface Project {
   id: string;
   slug: string;
@@ -170,3 +171,4 @@ Project Gamma highlights our capability in building sophisticated AI-driven anal
 export const getProjectBySlug = (slug: string): Project | undefined => {
   return projectsData.find(project => project.slug === slug);
 };
+
