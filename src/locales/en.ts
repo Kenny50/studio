@@ -58,6 +58,8 @@ export default {
     full_name_placeholder: 'e.g., John Doe',
     email_label: 'Email Address',
     email_placeholder: 'e.g., user@example.com',
+    phone_number_label: 'Phone Number (Optional)',
+    phone_number_placeholder: 'e.g., +1 234-567-8900',
     subject_label: 'Subject',
     subject_placeholder: 'Inquiry about digitizing company processes',
     message_label: 'Your Message',

@@ -58,6 +58,8 @@ export default {
     full_name_placeholder: '例如：陳大文',
     email_label: '電子信箱',
     email_placeholder: '例如：user@example.com',
+    phone_number_label: '電話號碼 (選填)',
+    phone_number_placeholder: '例如：0912-345-678',
     subject_label: '主旨',
     subject_placeholder: '諮詢公司現有流程的數位化方式',
     message_label: '訊息內容',
