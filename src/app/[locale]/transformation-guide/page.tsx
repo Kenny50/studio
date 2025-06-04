@@ -4,10 +4,11 @@ import PageContainer from '@/components/shared/PageContainer';
 import TransformationStepCard from '@/components/features/transformation/TransformationStepCard';
 import { ClipboardList, ListChecks, DraftingCompass, Rocket, Repeat } from 'lucide-react';
 import Image from 'next/image';
-import { getI18n } from '@/locales/server';
+import { getI18n, setStaticParamsLocale } from '@/locales/server';
 import type { ReactNode } from 'react';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return {
     title: t('transformation_guide_page.meta_title'),
@@ -15,7 +16,6 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-// Base structure for steps including keys and icons
 const baseTransformationSteps = [
   {
     key: 'assess_discover',
@@ -43,11 +43,11 @@ type TransformationStepKey = 'assess_discover' | 'plan_strategize' | 'prototype_
 
 
 export default async function TransformationGuidePage({ params: { locale } }: { params: { locale: string }}) {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
 
-  // Localize step titles and descriptions
   const localizedSteps = baseTransformationSteps.map(step => {
-    const stepKey = step.key as TransformationStepKey; // Type assertion
+    const stepKey = step.key as TransformationStepKey; 
     return {
       ...step,
       title: t(`transformation_guide_page.steps.${stepKey}.title`),

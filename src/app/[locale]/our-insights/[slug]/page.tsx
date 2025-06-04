@@ -4,19 +4,20 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageContainer from '@/components/shared/PageContainer';
-import { getArticleBySlug } from '@/lib/insights'; // Updated import
+import { getArticleBySlug } from '@/lib/insights'; 
 import ArticleDisplay from '@/components/features/insights/ArticleDisplay';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { CalendarDays, Edit3, ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getI18n } from '@/locales/server';
+import { getI18n, setStaticParamsLocale } from '@/locales/server';
 
 interface ArticlePageProps {
   params: { slug: string; locale: string };
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+  setStaticParamsLocale(params.locale);
   const t = await getI18n(params.locale);
   const article = await getArticleBySlug(params.slug, params.locale); 
   if (!article) {
@@ -53,6 +54,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
+  setStaticParamsLocale(params.locale);
   const article = await getArticleBySlug(params.slug, params.locale);
   const t = await getI18n(params.locale); 
 
@@ -60,10 +62,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  // Determine date locale for formatting
   const dateLocaleForFormatting = params.locale === 'zh' ? 'zh-CN' : 
                                  params.locale === 'en' ? 'en-US' : 
-                                 'default'; // Fallback if needed
+                                 'default';
 
   return (
     <PageContainer className="max-w-4xl mx-auto">

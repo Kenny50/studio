@@ -6,9 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ArrowRight, CheckCircle, Lightbulb, Users } from 'lucide-react';
 import PageContainer from '@/components/shared/PageContainer';
 import Image from 'next/image';
-import { getI18n } from '@/locales/server';
+import { getI18n, setStaticParamsLocale } from '@/locales/server';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return {
     title: t('home_page.meta_title'),
@@ -17,6 +18,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default async function Home({ params: { locale } }: { params: { locale: string }}) {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
 
   return (

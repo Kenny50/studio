@@ -2,13 +2,14 @@
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, LayoutGrid, UserPlus } from 'lucide-react'; // Updated icons
+import { Briefcase, LayoutGrid, UserPlus } from 'lucide-react'; 
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { getI18n } from '@/locales/server'; 
+import { getI18n, setStaticParamsLocale } from '@/locales/server'; 
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return {
     title: t('services_page.meta_title'),
@@ -16,25 +17,21 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-// Base servicesData structure (keys and icons remain constant)
 const baseServicesData = [
   {
     key: 'consulting_services',
     icon: <Briefcase className="h-10 w-10 text-primary" />,
     image: 'https://images.unsplash.com/photo-1565728744382-61accd4aa148?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8Y29uc3VsdGFudHxlbnwwfHx8fDE3NDg5NTcyODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    // aiHint removed as it's no longer a placeholder
   },
   {
     key: 'product_management',
     icon: <LayoutGrid className="h-10 w-10 text-primary" />,
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwcm9qZWN0JTIwbWFuYWdlJTIwcHJvY2Vzc3xlbnwwfHx8fDE3NDg5NTc1Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    // aiHint removed as it's no longer a placeholder
   },
   {
     key: 'team_recruitment',
     icon: <UserPlus className="h-10 w-10 text-primary" />,
     image: 'https://images.unsplash.com/photo-1512168681409-241f42d14bef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzQ4OTU4MDcwfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    // aiHint removed as it's no longer a placeholder
   },
 ];
 
@@ -47,20 +44,18 @@ function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default async function ServicesPage({ params: { locale } }: { params: { locale: string }}) {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
 
-  // Dynamically create localized services data
   const localizedServices = baseServicesData.map(service => {
     const serviceKey = service.key as 'consulting_services' | 'product_management' | 'team_recruitment';
-    // Ensure that the type for features matches what `t` function returns for an array.
-    // Typically, `t` might return an array of strings if your locale files are structured correctly.
     const features = t(`services_page.services.${serviceKey}.features`) as string[]; 
     
     return {
       ...service,
       title: t(`services_page.services.${serviceKey}.title`),
       description: t(`services_page.services.${serviceKey}.description`),
-      features: Array.isArray(features) ? features : [], // Fallback to empty array if not an array
+      features: Array.isArray(features) ? features : [], 
       imageAlt: t(`services_page.services.${serviceKey}.image_alt`),
     };
   });
@@ -85,7 +80,6 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
                 width={600}
                 height={400}
                 className="object-cover w-full h-64 md:h-full"
-                {...(service.aiHint ? { 'data-ai-hint': service.aiHint } : {})}
               />
             </div>
             <div className="md:w-1/2 flex flex-col">
@@ -128,4 +122,3 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
     </PageContainer>
   );
 }
-

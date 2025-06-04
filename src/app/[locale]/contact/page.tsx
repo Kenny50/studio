@@ -5,9 +5,10 @@ import ContactForm from '@/components/features/contact/ContactForm';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, MapPin, Phone, Linkedin, Twitter, Github } from 'lucide-react';
 import Link from 'next/link';
-import { getI18n } from '@/locales/server';
+import { getI18n, setStaticParamsLocale } from '@/locales/server';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return {
     title: t('contact_page.meta_title'),
@@ -17,6 +18,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 
 export default async function ContactPage({ params: { locale } }: { params: { locale: string }}) {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return (
     <PageContainer>
@@ -34,7 +36,7 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
               <CardTitle className="text-2xl">{t('contact_page.send_message_card_title')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ContactForm /> {/* ContactForm already uses useI18n */}
+              <ContactForm /> 
             </CardContent>
           </Card>
         </div>

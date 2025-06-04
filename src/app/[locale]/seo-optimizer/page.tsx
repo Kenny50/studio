@@ -2,9 +2,10 @@
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import SeoOptimizerForm from '@/components/features/seo/SeoOptimizerForm';
-import { getI18n } from '@/locales/server';
+import { getI18n, setStaticParamsLocale } from '@/locales/server';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return {
     title: t('seo_optimizer_page.meta_title'),
@@ -13,6 +14,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default async function SeoOptimizerPage({ params: { locale } }: { params: { locale: string }}) {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return (
     <PageContainer>

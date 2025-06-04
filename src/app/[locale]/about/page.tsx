@@ -4,28 +4,17 @@ import Image from 'next/image';
 import PageContainer from '@/components/shared/PageContainer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, Users } from 'lucide-react';
-import { getScopedI18n } from '@/locales/server'; // Changed from getI18n
+import { getScopedI18n, setStaticParamsLocale } from '@/locales/server';
 import type { ReactNode } from 'react';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  setStaticParamsLocale(locale);
   const t = await getScopedI18n('about_page', locale);
   return {
     title: t('meta_title'),
     description: t('meta_description'),
   };
 }
-
-// Team members data (example, consider localizing if names/roles change per locale)
-// const teamMembers = [
-//   {
-//     name: 'Alice Wonderland',
-//     role: 'CEO & Lead Strategist',
-//     imageUrl: 'https://placehold.co/300x300.png',
-//     aiHint: 'professional woman',
-//     bio: 'Alice drives the vision with over a decade of experience in digital innovation and strategy.'
-//   },
-//   // ... other team members
-// ];
 
 // Helper Icon Components (could be moved to a separate file if used widely)
 function LightbulbIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -59,26 +48,21 @@ const iconMap: Record<CoreValueIconKey, ReactNode> = {
 
 
 export default async function AboutPage({ params: { locale } }: { params: { locale: string }}) {
-  const aboutT = await getScopedI18n('about_page', locale); // Use getScopedI18n for the 'about_page' scope
+  setStaticParamsLocale(locale);
+  const aboutT = await getScopedI18n('about_page', locale); 
 
-  // Define the expected type for items in the core_values_list
-  // The 'key' should match CoreValueIconKey for type safety with iconMap
   type LocalizedCoreValueItem = { key: CoreValueIconKey; title: string; description: string };
   
-  // Fetch core values from locale file using the scoped translation function
   const { core_values_list } = (await import(`@/locales/${locale}`)).default.about_page;
 
   let coreValues: Array<{ title: string; description: string; icon: React.ReactNode }> = [];
 
   if (Array.isArray(core_values_list)) {
-    // Now we are sure it's an array, we can map it.
-    // We cast the items to the expected LocalizedCoreValueItem type.
     coreValues = (core_values_list as LocalizedCoreValueItem[]).map(value => {
-      // value.key is already typed as CoreValueIconKey if the cast is correct
       return {
-        title: value.title, // This should be the translated title from the locale file
-        description: value.description, // This should be the translated description
-        icon: iconMap[value.key] || <Award className="h-8 w-8 text-primary" /> // Fallback icon
+        title: value.title, 
+        description: value.description, 
+        icon: iconMap[value.key] || <Award className="h-8 w-8 text-primary" /> 
       };
     });
   } else {
@@ -86,7 +70,6 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
       `Error: 'core_values_list' (from scope 'about_page') from locale '${locale}' is not an array or is missing. Received:`,
       core_values_list
     );
-    // coreValues will remain an empty array, or you can throw an error / handle differently.
   }
 
 
@@ -121,34 +104,6 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
           </CardContent>
         </Card>
       </section>
-
-      {/* 
-      TODO: Localize team members section if needed and implement data fetching
-      <section className="py-12 md:py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">{aboutT('meet_team_title')}</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {teamMembers.map((member) => (
-            <Card key={member.name} className="text-center shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <Image
-                  src={member.imageUrl}
-                  alt={member.name}
-                  width={150}
-                  height={150}
-                  className="rounded-full mx-auto mb-4 border-4 border-primary/20"
-                  data-ai-hint={member.aiHint}
-                />
-                <CardTitle>{member.name}</CardTitle>
-                <p className="text-primary font-semibold">{member.role}</p>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">{member.bio}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section> 
-      */}
 
       <section className="py-12 md:py-16 px-6 md:px-10 bg-secondary/30 rounded-lg">
         <h2 className="text-3xl font-bold text-center mb-12">{aboutT('core_values_title')}</h2>

@@ -2,12 +2,13 @@
 import type { Metadata } from 'next';
 import PageContainer from '@/components/shared/PageContainer';
 import ArticleCard from '@/components/features/insights/ArticleCard';
-import { getAllArticles } from '@/lib/insights'; // Updated import
+import { getAllArticles } from '@/lib/insights'; 
 import { BookOpenText, Mail } from 'lucide-react';
 import NewsletterSubscribeForm from '@/components/features/newsletter/NewsletterSubscribeForm';
-import { getI18n } from '@/locales/server'; 
+import { getI18n, setStaticParamsLocale } from '@/locales/server'; 
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
   return {
     title: t('insights_page.meta_title'),
@@ -16,8 +17,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default async function OurInsightsPage({ params: { locale } }: { params: { locale: string }}) {
+  setStaticParamsLocale(locale);
   const t = await getI18n(locale);
-  const articles = await getAllArticles(locale); // Fetch localized articles
+  const articles = await getAllArticles(locale); 
 
   return (
     <PageContainer>
