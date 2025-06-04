@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 
 const notoSansSC = Noto_Sans_SC({
   variable: '--font-noto-sans-sc',
-  subsets: ['latin', 'chinese-simplified'],
+  subsets: ['latin'], // Removed 'chinese-simplified'
   weight: ['400', '700'], // Specify weights you need
   display: 'swap',
 });
