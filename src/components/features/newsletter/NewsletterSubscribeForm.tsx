@@ -52,16 +52,29 @@ export default function NewsletterSubscribeForm({
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      // Assuming 200 or 201 indicates success. Adjust if your API behaves differently.
       if (response.status === 200 || response.status === 201) {
         setIsSuccessDialogOpen(true);
-        setEmail(''); // Clear email on success
+        setEmail(''); 
       } else {
-        // Handle other successful statuses if needed, or treat as error
         setIsErrorDialogOpen(true);
       }
     } catch (error) {
-      console.error('Newsletter subscription error:', error);
+      if (axios.isAxiosError(error)) {
+        console.error('Axios newsletter subscription error:', {
+          message: error.message,
+          name: error.name,
+          code: error.code,
+          isAxiosError: error.isAxiosError,
+          config_url: error.config?.url,
+          config_method: error.config?.method,
+          request_readyState: error.request?.readyState,
+          request_status: error.request?.status,
+          response_status: error.response?.status,
+          response_data: error.response?.data,
+        });
+      } else {
+        console.error('Non-Axios newsletter subscription error:', error);
+      }
       setIsErrorDialogOpen(true);
     } finally {
       setIsSubscribing(false);
@@ -102,12 +115,8 @@ export default function NewsletterSubscribeForm({
         </Button>
       </form>
 
-      {/* Success Dialog */}
       <Dialog open={isSuccessDialogOpen} onOpenChange={(isOpen) => {
         setIsSuccessDialogOpen(isOpen);
-        if (!isOpen) {
-          // setEmail(''); // Email is cleared on successful submission now
-        }
       }}>
         <DialogContent className="sm:max-w-md p-6">
           <DialogHeader className="text-center">
@@ -138,7 +147,6 @@ export default function NewsletterSubscribeForm({
         </DialogContent>
       </Dialog>
 
-      {/* Error Dialog */}
       <Dialog open={isErrorDialogOpen} onOpenChange={setIsErrorDialogOpen}>
         <DialogContent className="sm:max-w-md p-6">
           <DialogHeader className="text-center">
