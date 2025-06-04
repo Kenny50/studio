@@ -5,7 +5,6 @@ export default {
     home: 'Home',
     about_us: 'About Us',
     services: 'Services',
-    portfolio: 'Portfolio',
     transformation_guide: 'Transformation Guide',
     our_insights: 'Our Insights',
     contact_us: 'Contact Us',
@@ -130,21 +129,6 @@ export default {
     article_not_found_title: 'Article Not Found',
     published: 'Published',
   },
-  portfolio_page: {
-    meta_title: 'Ciaodigi Success Stories',
-    meta_description: 'Browse some of our past projects.',
-    page_title: 'Success Stories',
-    subtitle: 'Browse our case studies to see how we help businesses achieve their digital goals.',
-    no_projects: 'Our project gallery is currently being updated. Please check back soon!',
-    view_case_study_button: 'View Case Study', // Used in ProjectCard.tsx
-  },
-  case_study_page: {
-    case_study_not_found_title: 'Case Study Not Found',
-    project_details_title: 'Project Details',
-    client_label: 'Client:',
-    date_label: 'Date:',
-    services_label: 'Services:',
-  },
   services_page: {
     meta_title: 'Ciaodigi Services',
     meta_description: 'Explore Ciaodigi\'s services: digital strategy, architecture & process planning, AI applications, design thinking, team recruitment & management.',
@@ -225,4 +209,23 @@ export default {
       }
     }
   },
+  seo_optimizer_page: {
+    meta_title: 'AI SEO Optimizer Tool',
+    meta_description: 'Enhance your markdown content with our AI SEO tool.',
+    title: 'AI-Powered SEO Optimizer',
+    subtitle: 'Leverage generative AI to enhance your markdown content (like articles or reports). Get suggestions for titles, meta descriptions, and semantic HTML tags to boost your organic visibility.',
+    content_label: 'Markdown Content',
+    content_placeholder: 'Paste your markdown content here...',
+    content_error: 'Content must be at least 100 characters.',
+    regions_label: 'Target Regions/Countries',
+    regions_placeholder: 'e.g., USA, Canada, UK',
+    regions_error: 'Please specify at least one target region.',
+    button_text: 'Generate SEO Suggestions',
+    button_loading_text: 'Optimizing...',
+    suggestions_title: 'SEO Optimization Suggestions',
+    suggestions_description: 'Review these AI-generated suggestions to improve your content\'s visibility.',
+    suggested_title_label: 'Suggested Title:',
+    suggested_meta_description_label: 'Suggested Meta Description:',
+    suggested_html_label: 'Semantic HTML Suggestions:'
+  }
 } as const;

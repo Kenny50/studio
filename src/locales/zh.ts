@@ -5,7 +5,6 @@ export default {
     home: '首頁',
     about_us: '關於我們',
     services: '服務項目',
-    portfolio: '案例',
     transformation_guide: '轉型指南',
     our_insights: '洞見報告',
     contact_us: '聯繫我們',
@@ -130,21 +129,6 @@ export default {
     article_not_found_title: '文章未找到',
     published: '已發佈',
   },
-  portfolio_page: {
-    meta_title: 'Ciaodigi 成功案例',
-    meta_description: '瀏覽我們過去的部分項目。',
-    page_title: '成功案例',
-    subtitle: '瀏覽我們的案例，了解我們如何幫助企業實現數位化目標',
-    no_projects: '我們的項目庫正在更新，請稍後回來查看！',
-    view_case_study_button: '查看案例研究',
-  },
-  case_study_page: {
-    case_study_not_found_title: '專案範例未找到',
-    project_details_title: '專案詳情',
-    client_label: '客戶：',
-    date_label: '日期：',
-    services_label: '服務：',
-  },
   services_page: {
     meta_title: 'Ciaodigi 的服務',
     meta_description: '探索 Ciaodigi 提供下列服務，數位化戰略、架構及流程規劃、AI應用、設計思考、團隊招募管理。',
@@ -225,4 +209,23 @@ export default {
         }
     }
   },
+  seo_optimizer_page: {
+    meta_title: 'AI SEO 優化工具',
+    meta_description: '使用我們的 AI SEO 工具增強您的 Markdown 內容。',
+    title: 'AI 驅動的 SEO 優化器',
+    subtitle: '利用生成式 AI 增強您的 Markdown 內容（例如文章或報告）。獲取標題、元描述和語義化 HTML 標籤的建議，以提高您的自然搜索可見性。',
+    content_label: 'Markdown 內容',
+    content_placeholder: '在此處貼上您的 Markdown 內容...',
+    content_error: '內容至少需要 100 個字元。',
+    regions_label: '目標地區/國家',
+    regions_placeholder: '例如：美國、加拿大、英國',
+    regions_error: '請至少指定一個目標地區。',
+    button_text: '生成 SEO 建議',
+    button_loading_text: '優化中...',
+    suggestions_title: 'SEO 優化建議',
+    suggestions_description: '查看這些 AI 生成的建議，以提高您內容的可見性。',
+    suggested_title_label: '建議標題：',
+    suggested_meta_description_label: '建議元描述：',
+    suggested_html_label: '語義化 HTML 建議：'
+  }
 } as const;

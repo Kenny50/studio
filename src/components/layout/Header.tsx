@@ -22,7 +22,6 @@ export default function Header() {
     { labelKey: 'header.home', href: '/' },
     { labelKey: 'header.about_us', href: '/about' },
     { labelKey: 'header.services', href: '/services' },
-    { labelKey: 'header.portfolio', href: '/portfolio' },
     { labelKey: 'header.transformation_guide', href: '/transformation-guide' },
     { labelKey: 'header.our_insights', href: '/our-insights' },
     { labelKey: 'header.contact_us', href: '/contact' },

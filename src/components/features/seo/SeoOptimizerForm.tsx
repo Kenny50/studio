@@ -13,17 +13,23 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useI18n } from '@/locales/client'; // Import useI18n
 
-const formSchema = z.object({
-  caseStudyContent: z.string().min(100, { message: "Case study content must be at least 100 characters." }),
-  targetRegions: z.string().min(2, { message: "Please specify at least one target region." }),
+// Form schema using translation keys for error messages
+const getFormSchema = (t: Function) => z.object({
+  markdownContent: z.string().min(100, { message: t('seo_optimizer_page.content_error') }),
+  targetRegions: z.string().min(2, { message: t('seo_optimizer_page.regions_error') }),
 });
+
 
 interface SeoOptimizerFormProps {
   initialContent?: string;
 }
 
 export default function SeoOptimizerForm({ initialContent = '' }: SeoOptimizerFormProps) {
+  const t = useI18n(); // Initialize useI18n
+  const formSchema = getFormSchema(t); // Get schema with translated messages
+
   const [isPending, startTransition] = useTransition();
   const [seoSuggestions, setSeoSuggestions] = useState<OptimizeCaseStudySeoOutput | null>(null);
   const { toast } = useToast();
@@ -31,7 +37,7 @@ export default function SeoOptimizerForm({ initialContent = '' }: SeoOptimizerFo
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      caseStudyContent: initialContent,
+      markdownContent: initialContent,
       targetRegions: '',
     },
   });
@@ -41,21 +47,21 @@ export default function SeoOptimizerForm({ initialContent = '' }: SeoOptimizerFo
       try {
         setSeoSuggestions(null); // Clear previous suggestions
         const input: OptimizeCaseStudySeoInput = {
-          caseStudyContent: values.caseStudyContent,
+          caseStudyContent: values.markdownContent, // Schema name matches API
           targetRegions: values.targetRegions,
         };
         const result = await optimizeCaseStudySeo(input);
         setSeoSuggestions(result);
         toast({
-          title: "SEO Suggestions Generated!",
-          description: "Review the suggestions below to optimize your content.",
+          title: t('seo_optimizer_page.suggestions_title'), // Using t for toast
+          description: t('seo_optimizer_page.suggestions_description'),
           variant: "default",
         });
       } catch (error) {
         console.error("Error optimizing SEO:", error);
         toast({
-          title: "Error",
-          description: "Failed to generate SEO suggestions. Please try again.",
+          title: t('contact_form.error_title'), // Re-use generic error title
+          description: t('contact_form.error_description'), // Re-use generic error description
           variant: "destructive",
         });
       }
@@ -68,13 +74,13 @@ export default function SeoOptimizerForm({ initialContent = '' }: SeoOptimizerFo
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
-            name="caseStudyContent"
+            name="markdownContent" // Keep name as "markdownContent" for schema mapping
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-lg font-semibold">Case Study Content (Markdown)</FormLabel>
+                <FormLabel className="text-lg font-semibold">{t('seo_optimizer_page.content_label')}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Paste your case study content here in Markdown format..."
+                    placeholder={t('seo_optimizer_page.content_placeholder')}
                     {...field}
                     rows={15}
                     className="border-input focus:border-primary focus:ring-primary"
@@ -89,10 +95,10 @@ export default function SeoOptimizerForm({ initialContent = '' }: SeoOptimizerFo
             name="targetRegions"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-lg font-semibold">Target Regions/Countries</FormLabel>
+                <FormLabel className="text-lg font-semibold">{t('seo_optimizer_page.regions_label')}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="e.g., USA, Canada, UK"
+                    placeholder={t('seo_optimizer_page.regions_placeholder')}
                     {...field}
                     className="border-input focus:border-primary focus:ring-primary"
                   />
@@ -105,12 +111,12 @@ export default function SeoOptimizerForm({ initialContent = '' }: SeoOptimizerFo
             {isPending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Optimizing...
+                {t('seo_optimizer_page.button_loading_text')}
               </>
             ) : (
               <>
                 <Sparkles className="mr-2 h-4 w-4" />
-                Generate SEO Suggestions
+                {t('seo_optimizer_page.button_text')}
               </>
             )}
           </Button>
@@ -120,22 +126,22 @@ export default function SeoOptimizerForm({ initialContent = '' }: SeoOptimizerFo
       {seoSuggestions && (
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2"><Sparkles className="text-accent h-6 w-6" /> SEO Optimization Suggestions</CardTitle>
+            <CardTitle className="text-2xl flex items-center gap-2"><Sparkles className="text-accent h-6 w-6" /> {t('seo_optimizer_page.suggestions_title')}</CardTitle>
             <CardDescription>
-              Review these AI-generated suggestions to improve your case study's visibility.
+              {t('seo_optimizer_page.suggestions_description')}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-2">Suggested Title:</h3>
+              <h3 className="text-xl font-semibold mb-2">{t('seo_optimizer_page.suggested_title_label')}</h3>
               <p className="p-3 bg-muted rounded-md text-muted-foreground">{seoSuggestions.titleSuggestion}</p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-2">Suggested Meta Description:</h3>
+              <h3 className="text-xl font-semibold mb-2">{t('seo_optimizer_page.suggested_meta_description_label')}</h3>
               <p className="p-3 bg-muted rounded-md text-muted-foreground">{seoSuggestions.metaDescriptionSuggestion}</p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-2">Semantic HTML Suggestions:</h3>
+              <h3 className="text-xl font-semibold mb-2">{t('seo_optimizer_page.suggested_html_label')}</h3>
               <div className="p-3 bg-muted rounded-md text-muted-foreground whitespace-pre-wrap">{seoSuggestions.semanticHtmlSuggestions}</div>
             </div>
           </CardContent>
