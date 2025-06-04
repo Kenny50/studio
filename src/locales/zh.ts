@@ -1,6 +1,6 @@
 
 export default {
-  company_name: 'Ciaodigi',
+  company_name: 'Ciaodigi 喬五有限公司',
   header: {
     home: '首頁',
     about_us: '關於我們',
@@ -15,7 +15,7 @@ export default {
   },
   footer: {
     tagline: '您的數位轉型顧問。我們為您招募團隊，為您打造最佳的解決方案，幫助您的企業蓬勃發展。',
-    copyright: '© {year} Ciaodigi Navigator. 版權所有。',
+    copyright: '© {year} Ciaodigi 喬五有限公司. 版權所有。',
     stay_updated: '訂閱我們',
     newsletter_description: '訂閱已獲得最新的洞見報告、產業新聞、文章。',
     subscribe: '訂閱',
@@ -29,7 +29,7 @@ export default {
     meta_title: 'Ciaodigi | 數位轉型顧問',
     meta_description: '數位轉型與軟體解決方案。',
     hero_title_part1: '與',
-    hero_title_highlight: 'Ciaodigi',
+    hero_title_highlight: 'Ciaodigi 喬五有限公司',
     hero_title_part2: ' 一起探索數位轉型',
     hero_subtitle: '我們與企業合作，打造創新的解決方案，為您規劃好數位轉型的每一步',
     contact_us_button: '聯繫我們',
@@ -78,7 +78,7 @@ export default {
     email_empty_error: "電子信箱不能為空。",
     email_invalid_error: "請輸入有效的電子信箱。",
     dialog_title: "感謝你的訂閱！",
-    dialog_description: "您可能也想關注我們的社群軟體來獲得更多消息：",
+    dialog_description: "未來不只是電子報，也會經營社群軟體喔！！",
     instagram_button: "Instagram",
     linkedin_button: "領英",
     close_button: "關閉",

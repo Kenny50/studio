@@ -125,7 +125,7 @@ export default function NewsletterSubscribeForm({
           <DialogDescription className="text-center mt-2 mb-4 text-muted-foreground">
             {t('newsletter_form.dialog_description')}
           </DialogDescription>
-          <div className="flex justify-center gap-4 my-4">
+          {/* <div className="flex justify-center gap-4 my-4">
             <Button variant="outline" asChild>
               <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <Instagram className="mr-2 h-5 w-5" /> {t('newsletter_form.instagram_button')}
@@ -136,7 +136,7 @@ export default function NewsletterSubscribeForm({
                 <Linkedin className="mr-2 h-5 w-5" /> {t('newsletter_form.linkedin_button')}
               </Link>
             </Button>
-          </div>
+          </div> */}
           <DialogFooter className="mt-6 flex justify-end">
             <DialogClose asChild>
               <Button type="button" variant="secondary">

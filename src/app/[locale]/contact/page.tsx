@@ -49,26 +49,26 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
             <CardContent className="space-y-4">
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary" />
-                <a href="mailto:info@ciaodiginavigator.com" className="text-muted-foreground hover:text-primary">
-                  info@ciaodiginavigator.com
+                <a href="mailto:ciaodigi@gmail.com" className="text-muted-foreground hover:text-primary">
+                ciaodigi@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary" />
-                <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary">
-                  +1 (234) 567-890
+                <a href="tel:+886936965814" className="text-muted-foreground hover:text-primary">
+                  +886 936965814
                 </a>
               </div>
-              <div className="flex items-start gap-3">
+              {/* <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-1" />
                 <p className="text-muted-foreground">
                   {t('contact_page.address')}
                 </p>
-              </div>
+              </div> */}
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg">
+          {/* <Card className="shadow-lg">
             <CardHeader>
               <CardTitle>{t('contact_page.connect_with_us_card_title')}</CardTitle>
             </CardHeader>
@@ -83,7 +83,7 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
                 <Github className="h-6 w-6" />
               </Link>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </section>
     </PageContainer>

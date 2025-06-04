@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="md:col-span-6 lg:col-span-5">
             {/* NewsletterSubscribeForm uses its own internal translations via useI18n */}
             <NewsletterSubscribeForm />
-            <div className="flex md:justify-start gap-4 mt-4">
+            {/* <div className="flex md:justify-start gap-4 mt-4">
               <Link href="#" aria-label={t('footer.social_media.twitter')} className="text-muted-foreground hover:text-primary p-2 rounded-md hover:bg-secondary transition-colors">
                 <Twitter className="h-5 w-5" />
               </Link>
@@ -40,7 +40,7 @@ export default function Footer() {
               <Link href="#" aria-label={t('footer.social_media.github')} className="text-muted-foreground hover:text-primary p-2 rounded-md hover:bg-secondary transition-colors">
                 <Github className="h-5 w-5" />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

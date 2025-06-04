@@ -78,7 +78,7 @@ export default {
     email_empty_error: "Email address cannot be empty.",
     email_invalid_error: "Please enter a valid email address.",
     dialog_title: "Thank You for Subscribing!",
-    dialog_description: "You might also want to follow our social media channels for more updates:",
+    dialog_description: "We’ll also be active on social media platforms soon!",
     instagram_button: "Instagram",
     linkedin_button: "LinkedIn",
     close_button: "Close",
