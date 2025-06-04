@@ -121,7 +121,7 @@ export default async function Home({ params: { locale } }: { params: { locale: s
           </div>
           <div>
             <Image
-              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxleHBlcnR8ZW58MHx8fHwxNzQ4OTU2NzgyfDA&ixlib=rb-4.1.0&q=80&w=1080"
+              src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&q=80&w=1080"
               alt={t('home_page.why_partner_title')} 
               width={600}
               height={400}

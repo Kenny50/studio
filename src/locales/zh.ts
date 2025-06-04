@@ -72,6 +72,7 @@ export default {
     form_title: "保持更新",
     form_description: "訂閱我們的文章，獲取最新的洞見、新聞和業界資訊。",
     subscribe_now_button: "立即訂閱",
+    subscribing_button: "訂閱中...",
     email_placeholder: "請輸入你的電子信箱",
     email_empty_error: "電子信箱不能為空。",
     email_invalid_error: "請輸入有效的電子信箱。",
@@ -80,6 +81,8 @@ export default {
     instagram_button: "Instagram",
     linkedin_button: "領英",
     close_button: "關閉",
+    error_dialog_title: "訂閱失敗",
+    error_dialog_description: "目前無法完成您的訂閱。請檢查您的電子郵件地址後再試一次。如果問題持續存在，請聯繫支援人員。",
   },
   about_page: {
     meta_title: '關於 Ciaodigi ',

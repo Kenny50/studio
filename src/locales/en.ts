@@ -72,6 +72,7 @@ export default {
     form_title: "Stay Updated",
     form_description: "Subscribe to our articles for the latest insights, news, and industry information.",
     subscribe_now_button: "Subscribe Now",
+    subscribing_button: "Subscribing...",
     email_placeholder: "Enter your email address",
     email_empty_error: "Email address cannot be empty.",
     email_invalid_error: "Please enter a valid email address.",
@@ -80,6 +81,8 @@ export default {
     instagram_button: "Instagram",
     linkedin_button: "LinkedIn",
     close_button: "Close",
+    error_dialog_title: "Subscription Failed",
+    error_dialog_description: "We couldn't subscribe you at this moment. Please check your email address and try again. If the problem persists, please contact support.",
   },
   about_page: {
     meta_title: 'About Ciaodigi',

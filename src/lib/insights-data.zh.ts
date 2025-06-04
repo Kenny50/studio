@@ -7,7 +7,7 @@ export const articlesDataZh: Article[] = [
     slug: 'future-of-digital-transformation', // Slugs should remain consistent for routing
     title: '數位轉型：挑戰與為何需要開始',
     summary: '在這個數位快速變遷的時代，企業若想保持競爭力與相關性，數位轉型已不再是選項，而是必須。然而，許多企業在轉型過程中會遇到阻礙，導致無法真正產生預期成果。',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://images.unsplash.com/photo-1512236253181-a8038d12f617?q=80&w=3028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAiHint: 'digital abstract', // AI hint can remain English or be localized if necessary for image search
     author: {
       name: '張永翰', // Localized name
@@ -97,7 +97,7 @@ export const articlesDataZh: Article[] = [
     slug: 'demystifying-digital-transformation',
     title: '為何聘請 IT 顧問是企業的明智之舉',
     summary: '在這個科技主導的時代，數位產品的好壞將決定企業的成長與生存。不論你是剛起步的新創公司、已經有內部技術團隊的中大型企業，或正面臨技術挑戰的組織，一位 IT 顧問都能提供你關鍵的幫助。',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://images.unsplash.com/photo-1623780569981-8ecf6b181928?q=80&w=2918&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAiHint: 'consultant meeting',
     author: {
       name: '張永翰',

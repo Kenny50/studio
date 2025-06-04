@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,9 +13,10 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
+  DialogFooter,
 } from '@/components/ui/dialog';
-import { Mail, Instagram, Linkedin } from 'lucide-react';
-import { useI18n } from '@/locales/client'; // Import useI18n
+import { Mail, Instagram, Linkedin, Loader2, AlertTriangle } from 'lucide-react';
+import { useI18n } from '@/locales/client';
 
 interface NewsletterSubscribeFormProps {
   className?: string;
@@ -23,28 +25,47 @@ interface NewsletterSubscribeFormProps {
 export default function NewsletterSubscribeForm({
   className,
 }: NewsletterSubscribeFormProps) {
-  const t = useI18n(); // Initialize useI18n
+  const t = useI18n();
   const [email, setEmail] = useState('');
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [showError, setShowError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
+  const [isErrorDialogOpen, setIsErrorDialogOpen] = useState(false);
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [formError, setFormError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
-      setErrorMessage(t('newsletter_form.email_empty_error'));
-      setShowError(true);
+      setFormError(t('newsletter_form.email_empty_error'));
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setErrorMessage(t('newsletter_form.email_invalid_error'));
-      setShowError(true);
+      setFormError(t('newsletter_form.email_invalid_error'));
       return;
     }
-    setShowError(false);
-    setErrorMessage('');
-    console.log('Subscribed with:', email);
-    setIsDialogOpen(true);
+    setFormError('');
+    setIsSubscribing(true);
+
+    try {
+      const response = await axios.post(
+        'https://oe5lu0h3xf.execute-api.ap-northeast-1.amazonaws.com/production/subscribe-newsletter',
+        { email },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+
+      // Assuming 200 or 201 indicates success. Adjust if your API behaves differently.
+      if (response.status === 200 || response.status === 201) {
+        setIsSuccessDialogOpen(true);
+        setEmail(''); // Clear email on success
+      } else {
+        // Handle other successful statuses if needed, or treat as error
+        setIsErrorDialogOpen(true);
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      setIsErrorDialogOpen(true);
+    } finally {
+      setIsSubscribing(false);
+    }
   };
 
   return (
@@ -59,22 +80,33 @@ export default function NewsletterSubscribeForm({
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              if (showError) setShowError(false);
+              if (formError) setFormError('');
             }}
             aria-label="Email for newsletter"
-            className={`w-full ${showError ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+            className={`w-full ${formError ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+            disabled={isSubscribing}
           />
-          {showError && <p className="text-destructive text-xs mt-1">{errorMessage}</p>}
+          {formError && <p className="text-destructive text-xs mt-1">{formError}</p>}
         </div>
-        <Button type="submit" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground whitespace-nowrap">
-          <Mail className="mr-2 h-4 w-4" /> {t('newsletter_form.subscribe_now_button')}
+        <Button type="submit" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground whitespace-nowrap" disabled={isSubscribing}>
+          {isSubscribing ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              {t('newsletter_form.subscribing_button')}
+            </>
+          ) : (
+            <>
+              <Mail className="mr-2 h-4 w-4" /> {t('newsletter_form.subscribe_now_button')}
+            </>
+          )}
         </Button>
       </form>
 
-      <Dialog open={isDialogOpen} onOpenChange={(isOpen) => {
-        setIsDialogOpen(isOpen);
+      {/* Success Dialog */}
+      <Dialog open={isSuccessDialogOpen} onOpenChange={(isOpen) => {
+        setIsSuccessDialogOpen(isOpen);
         if (!isOpen) {
-          setEmail('');
+          // setEmail(''); // Email is cleared on successful submission now
         }
       }}>
         <DialogContent className="sm:max-w-md p-6">
@@ -96,13 +128,35 @@ export default function NewsletterSubscribeForm({
               </Link>
             </Button>
           </div>
-          <div className="mt-6 flex justify-end">
+          <DialogFooter className="mt-6 flex justify-end">
             <DialogClose asChild>
               <Button type="button" variant="secondary">
                 {t('newsletter_form.close_button')}
               </Button>
             </DialogClose>
-          </div>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Error Dialog */}
+      <Dialog open={isErrorDialogOpen} onOpenChange={setIsErrorDialogOpen}>
+        <DialogContent className="sm:max-w-md p-6">
+          <DialogHeader className="text-center">
+             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10 mb-2">
+                <AlertTriangle className="h-6 w-6 text-destructive" />
+              </div>
+            <DialogTitle className="text-2xl font-bold">{t('newsletter_form.error_dialog_title')}</DialogTitle>
+          </DialogHeader>
+          <DialogDescription className="text-center mt-2 mb-4 text-muted-foreground">
+            {t('newsletter_form.error_dialog_description')}
+          </DialogDescription>
+          <DialogFooter className="mt-6 flex justify-end">
+            <DialogClose asChild>
+              <Button type="button" variant="outline">
+                {t('newsletter_form.close_button')}
+              </Button>
+            </DialogClose>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
