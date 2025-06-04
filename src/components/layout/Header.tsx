@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useI18n, useCurrentLocale } from '@/locales/client';
+import { cn } from '@/lib/utils';
 
 export default function Header() {
   const t = useI18n();
@@ -44,8 +45,13 @@ export default function Header() {
           {navItems.map((item) => (
             <Link
               key={item.labelKey}
-              href={item.href} 
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              href={item.href}
+              className={cn(
+                "text-sm font-medium transition-colors",
+                item.labelKey === 'header.our_insights'
+                  ? "text-primary font-bold hover:text-primary/80"
+                  : "text-muted-foreground hover:text-primary"
+              )}
             >
               {t(item.labelKey as any)}
             </Link>
@@ -101,7 +107,12 @@ export default function Header() {
                   <Link
                     key={item.labelKey}
                     href={item.href}
-                    className="text-muted-foreground hover:text-primary"
+                    className={cn(
+                      "transition-colors",
+                      item.labelKey === 'header.our_insights'
+                        ? "text-primary font-bold hover:text-primary/80"
+                        : "text-muted-foreground hover:text-primary"
+                    )}
                   >
                     {t(item.labelKey as any)}
                   </Link>
