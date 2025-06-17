@@ -49,8 +49,8 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
                         <CardContent className="space-y-4">
                             <div className="flex items-center gap-3">
                                 <Mail className="h-5 w-5 text-primary" />
-                                <a href="mailto:ciaodigi@gmail.com" className="text-muted-foreground hover:text-primary">
-                                    ciaodigi@gmail.com
+                                <a href="mailto:ken@ciaodigi.com" className="text-muted-foreground hover:text-primary">
+                                    ken@ciaodigi.com
                                 </a>
                             </div>
                             <div className="flex items-center gap-3">

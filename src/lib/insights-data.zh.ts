@@ -2,21 +2,21 @@
 import type { Article } from './insights-data.en'; // Use the same interface
 
 export const articlesDataZh: Article[] = [
-  {
-    id: '1',
-    slug: 'future-of-digital-transformation', // Slugs should remain consistent for routing
-    title: '數位轉型：挑戰與為何需要開始',
-    summary: '在這個數位快速變遷的時代，企業若想保持競爭力與相關性，數位轉型已不再是選項，而是必須。然而，許多企業在轉型過程中會遇到阻礙，導致無法真正產生預期成果。',
-    imageUrl: 'https://images.unsplash.com/photo-1512236253181-a8038d12f617?q=80&w=3028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imageAiHint: 'digital abstract', // AI hint can remain English or be localized if necessary for image search
-    author: {
-      name: '張永翰', // Localized name
-      avatarUrl: 'https://placehold.co/100x100.png',
-      avatarAiHint: 'male portrait'
-    },
-    date: '2024-07-15',
-    tags: ['數位轉型', '管理'], // Localized tags
-    contentMarkdown: `
+    {
+        id: '1',
+        slug: 'future-of-digital-transformation', // Slugs should remain consistent for routing
+        title: '數位轉型：挑戰與為何需要開始',
+        summary: '在這個數位快速變遷的時代，企業若想保持競爭力與相關性，數位轉型已不再是選項，而是必須。然而，許多企業在轉型過程中會遇到阻礙，導致無法真正產生預期成果。',
+        imageUrl: 'https://images.unsplash.com/photo-1512236253181-a8038d12f617?q=80&w=3028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        imageAiHint: 'digital abstract', // AI hint can remain English or be localized if necessary for image search
+        author: {
+            name: '張永翰', // Localized name
+            avatarUrl: 'https://placehold.co/100x100.png',
+            avatarAiHint: 'male portrait'
+        },
+        date: '2025-06-15',
+        tags: ['數位轉型', '管理'], // Localized tags
+        contentMarkdown: `
 在這個數位快速變遷的時代，企業若想保持競爭力與相關性，數位轉型已不再是選項，而是必須。然而，許多企業在轉型過程中會遇到阻礙，導致無法真正產生預期成果。
 
 ---
@@ -91,22 +91,22 @@ export const articlesDataZh: Article[] = [
 
 > 💬 *「轉型並不容易，但在對的人幫助下，可以發揮它的真正價值。」*
     `,
-  },
-  {
-    id: '2',
-    slug: 'demystifying-digital-transformation',
-    title: '為何聘請 IT 顧問是企業的明智之舉',
-    summary: '在這個科技主導的時代，數位產品的好壞將決定企業的成長與生存。不論你是剛起步的新創公司、已經有內部技術團隊的中大型企業，或正面臨技術挑戰的組織，一位 IT 顧問都能提供你關鍵的幫助。',
-    imageUrl: 'https://images.unsplash.com/photo-1623780569981-8ecf6b181928?q=80&w=2918&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imageAiHint: 'consultant meeting',
-    author: {
-      name: '張永翰',
-      avatarUrl: 'https://placehold.co/100x100.png',
-      avatarAiHint: 'male portrait'
     },
-    date: '2024-07-15',
-    tags: ['管理', '商業策略', '科技'],
-    contentMarkdown: `
+    {
+        id: '2',
+        slug: 'demystifying-digital-transformation',
+        title: '為何聘請 IT 顧問是企業的明智之舉',
+        summary: '在這個科技主導的時代，數位產品的好壞將決定企業的成長與生存。不論你是剛起步的新創公司、已經有內部技術團隊的中大型企業，或正面臨技術挑戰的組織，一位 IT 顧問都能提供你關鍵的幫助。',
+        imageUrl: 'https://images.unsplash.com/photo-1623780569981-8ecf6b181928?q=80&w=2918&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        imageAiHint: 'consultant meeting',
+        author: {
+            name: '張永翰',
+            avatarUrl: 'https://placehold.co/100x100.png',
+            avatarAiHint: 'male portrait'
+        },
+        date: '2025-06-15',
+        tags: ['管理', '商業策略', '科技'],
+        contentMarkdown: `
 在當今的數位時代，技術可以成就或毀掉一家公司的成長。無論您是正在打造第一個產品、擴展數位能力，還是面臨技術團隊挑戰，聘請 **IT 顧問**可能是您迄今為止最好的決定。
 
 在這個科技主導的時代，數位產品的好壞將決定企業的成長與生存。不論你是剛起步的新創公司、已經有內部技術團隊的中大型企業，或正面臨技術挑戰的組織，一位 IT 顧問都能提供你關鍵的幫助。
@@ -179,5 +179,5 @@ export const articlesDataZh: Article[] = [
 
 ---
     `,
-  },
+    },
 ];
