@@ -2,7 +2,8 @@
 "use client"; // Make it a client component to use useI18n hook
 
 import Link from 'next/link';
-import { ShipIcon, Menu, Languages } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, Languages } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
@@ -39,7 +40,13 @@ export default function Header() {
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center justify-between px-4 md:px-6">
                 <Link href="/" className="flex items-center gap-2">
-                    <ShipIcon className="h-7 w-7 text-primary" />
+                    <Image
+                        src="https://s3.ap-northeast-1.amazonaws.com/ciaodigi.com/logo192.png" // ← Use public path instead of relative import
+                        alt="Company Logo"
+                        width={32}
+                        height={32}
+                        unoptimized
+                    />
                     <span className="text-xl font-bold text-foreground">{t('company_name')}</span>
                 </Link>
                 <nav className="hidden md:flex gap-4 items-center">
@@ -100,8 +107,14 @@ export default function Header() {
                         </SheetTrigger>
                         <SheetContent side="right">
                             <nav className="grid gap-6 text-lg font-medium mt-8">
-                                <Link href="/" className="flex items-center gap-2 text-lg font-semibold mb-4">
-                                    <ShipIcon className="h-7 w-7 text-primary" />
+                                <Link href="/" className="flex items-center gap-2">
+                                    <Image
+                                        src="https://s3.ap-northeast-1.amazonaws.com/ciaodigi.com/logo192.png" // ← Use public path instead of relative import
+                                        alt="Company Logo"
+                                        width={32}
+                                        height={32}
+                                        unoptimized
+                                    />
                                     <span className="text-xl font-bold text-foreground">{t('company_name')}</span>
                                 </Link>
                                 {navItems.map((item) => (
