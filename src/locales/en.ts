@@ -15,6 +15,7 @@ export default {
     },
     footer: {
         tagline: 'Your digital transformation consultant. We recruit teams for you and build optimal solutions to help your business thrive.',
+        company_information: 'Tax ID: 96794719',
         copyright: '© {year} Ciaodigi Navigator. All rights reserved.',
         stay_updated: 'Subscribe to Us',
         newsletter_description: 'Subscribe to get the latest insights, industry news, and articles.',

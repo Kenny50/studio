@@ -15,6 +15,7 @@ export default {
     },
     footer: {
         tagline: '您的數位轉型顧問。我們為您招募團隊，為您打造最佳的解決方案，幫助您的企業蓬勃發展。',
+        company_information: '統一編號: 96794719',
         copyright: '© {year} Ciaodigi 喬五有限公司. 版權所有。',
         stay_updated: '訂閱我們',
         newsletter_description: '訂閱已獲得最新的洞見報告、產業新聞、文章。',
