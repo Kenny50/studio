@@ -49,12 +49,14 @@ Reality disagrees. Data lives in scattered apps, APIs are “connected” yet la
 
 Inside this “digital kitchen,” engineers, PMs, and consultants line up like cooks, shift leads, and the executive chef:
 
-| Role        | In the Kitchen                         | In the Company                      |
-|-------------|----------------------------------------|-------------------------------------|
-| Engineer    | Precise sauté, perfect heat control    | Write code, tune performance        |
-| PM          | Schedule dishes, keep service on pace  | Coordinate timelines, manage risk   |
-| Consultant  | Design the layout, watch costs, create menus | Rebuild processes, enforce strategy, assure quality |
+Engineer
+In the kitchen, an Engineer is like the chef who precisely flips ingredients and perfectly controls the heat, ensuring every dish is cooked just right. In a corporate setting, they transform into key figures who write code and optimize system performance, ensuring products run smoothly and efficiently.
 
+PM (Product Manager/Project Manager)
+The kitchen's PM is responsible for managing orders and ensuring the pace of meal service, making sure every dish reaches the customer on time. In a corporate environment, the PM's role is to coordinate project timelines and manage potential risks, ensuring projects progress smoothly and achieve their goals.
+
+Consultant
+A Consultant in the kitchen is tasked with designing workflows, controlling costs, and even developing new menus, bringing fresh possibilities to the restaurant. In the corporate world, they are responsible for restructuring processes, implementing strategies, and ensuring the quality of the final product or service, providing high-value solutions to the business.
 Engineers and PMs can cook and plate on schedule, but without the chef’s design the kitchen can still choke on layout tangles or runaway costs.
 
 ### Why Are Consultants So Critical?
