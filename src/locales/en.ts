@@ -55,7 +55,7 @@ export default {
         send_message_button: 'Send Message',
         sending_button: 'Sending...',
         full_name_label: 'Full Name',
-        full_name_placeholder: 'e.g., John Doe',
+        full_name_placeholder: 'e.g., Ken Chang',
         email_label: 'Email Address',
         email_placeholder: 'e.g., user@example.com',
         phone_number_label: 'Phone Number (Optional)',
@@ -89,7 +89,7 @@ export default {
     about_page: {
         meta_title: 'About Ciaodigi',
         meta_description: 'Learn about Ciaodigi, our mission, team, and the core values that drive our commitment to digital excellence.',
-        page_title: 'About Ciaodigi Navigator',
+        page_title: 'About Ciaodigi',
         subtitle: 'We are dedicated to helping businesses thrive through digitalization and process improvement.',
         our_story_title: 'Our Story',
         our_story_image_alt: 'Design thinking process with sticky notes',
